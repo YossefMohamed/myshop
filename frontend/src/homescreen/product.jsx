@@ -6,7 +6,9 @@ function Product(props) {
   return (
     <div>
       <Card className="my-3 p-1 rounded w-100">
-        <Card.Img variant="top" src={props.product.image} />
+        <Link to={`/product/${props.product._id}`}>
+          <Card.Img variant="top" src={props.product.image} />
+        </Link>
         <Card.Body>
           <Card.Title as="div" className="text-dark ">
             <Link to={`/product/${props.product._id}`}>

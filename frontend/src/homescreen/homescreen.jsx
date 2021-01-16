@@ -6,6 +6,9 @@ import Product from "./product.jsx";
 import { listProducts } from "./../actions/productAction";
 import Loader from "../loader/loader.jsx";
 import Massage from "../message/message.jsx";
+
+import "./homescreen.css";
+
 const HomeScreen = (props) => {
   useEffect(() => {
     props.dispatch(listProducts());
@@ -13,7 +16,7 @@ const HomeScreen = (props) => {
   console.log(props);
   const { products, error } = props.productList;
   return (
-    <div>
+    <div className="homescreen__main">
       <h1 className="text-center">last Items</h1>
       {props.productList.loading ? (
         <Loader />

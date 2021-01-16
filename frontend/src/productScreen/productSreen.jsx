@@ -7,6 +7,7 @@ import {
   ListGroupItem,
   Card,
   Button,
+  Form,
 } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import Rating from "./../rating/rating";
@@ -15,12 +16,17 @@ import { connect } from "react-redux";
 import Loader from "../loader/loader";
 import Massage from "../message/message";
 function ProductScreen(props) {
+  const [qty = 1, setQtu] = useState();
   useEffect(() => {
     props.dispatch(listProductDetails(props.match.params.id));
     console.log(props);
   }, []);
 
+  const addToCartHandler = () => {
+    props.history.push(`/cart/${props.match.params.id}?qty=${qty}`);
+  };
   const { loading, product, error } = props.product;
+
   return (
     <>
       {loading ? (
@@ -80,9 +86,32 @@ function ProductScreen(props) {
                       </Col>
                     </Row>
                   </ListGroupItem>
+                  {product.countInStock > 0 && (
+                    <ListGroupItem>
+                      <Row>
+                        <Col className="d-flex align-items-center">Qty:</Col>
+                        <Col>
+                          <Form.Control
+                            as="select"
+                            onChange={(e) => setQtu(e.target.value)}
+                            size="sm"
+                          >
+                            {[...Array(product.countInStock).keys()].map(
+                              (x) => (
+                                <option key={x + 1} value={x + 1}>
+                                  {x + 1}
+                                </option>
+                              )
+                            )}
+                          </Form.Control>
+                        </Col>
+                      </Row>
+                    </ListGroupItem>
+                  )}
                   <ListGroupItem>
                     <Button
                       className="btn-block"
+                      onClick={addToCartHandler}
                       type="button"
                       disabled={product.countInStock === 0}
                     >
