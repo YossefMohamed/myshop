@@ -60,7 +60,7 @@ function Rating({ value, number }) {
           }
         ></i>
       </span>
-      <span className="mx-3">{number}</span>
+      <span className="mx-2">{number}</span>
     </div>
   );
 }

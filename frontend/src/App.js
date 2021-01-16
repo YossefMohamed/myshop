@@ -1,7 +1,6 @@
 import Header from "./header/header";
 import { Container } from "react-bootstrap";
 import Footer from "./footer/footer";
-import "./App.css";
 import HomeScreen from "./homescreen/homescreen";
 import ProductScreen from "./productScreen/productSreen";
 

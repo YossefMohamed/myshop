@@ -16,7 +16,7 @@ function Product(props) {
           <Card.Text as="div" className="my-4 text-center">
             <Rating
               value={props.product.rating}
-              number={`${props.product.numReviews} reviews`}
+              number={`${props.product.numberReviews} reviews`}
             />
           </Card.Text>
           <Card.Text as="h3" className="my-1 text-center">
