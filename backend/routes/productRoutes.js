@@ -1,26 +1,17 @@
 const express = require("express");
-const Product = require("./../models/productModel");
+
 const router = express.Router();
 const handler = require("express-async-handler");
+const { getProducts, getProductById } = require("../controllers/productController");
 router.get(
   "/",
-  handler(async (req, res) => {
-    const products = await Product.find();
-    res.json(products);
-  })
+  getProductById
+  
 );
 
 router.get(
   "/:id",
-  handler(async (req, res) => {
-    const product = await Product.findById(req.params.id);
-    if (product) {
-      res.json(product);
-    } else {
-      res.status(404);
-      throw new Error("Product not found !");
-    }
-  })
+  getProducts
 );
 
 module.exports = router;
