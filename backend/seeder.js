@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+
 const products = require("./../frontend/src/products");
 const users = require("./../frontend/src/user");
 const connectDb = require("./database");
