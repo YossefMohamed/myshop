@@ -7,12 +7,13 @@ const userRoutes = require("./routes/userRoutes");
 const connectDB = require("./database");
 
 dotenv.config({ path: "./config.env" });
+
+connectDB();
+
 app.use(express.json());
 app.use(cors());
 app.use("/api/products", productRoutes);
 app.use("/api/users", userRoutes);
-
-connectDB();
 
 const port = process.env.PORT || 5000;
 const products = require("./../frontend/src/products");
