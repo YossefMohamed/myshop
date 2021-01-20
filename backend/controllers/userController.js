@@ -29,7 +29,6 @@ exports.getUserProfile = handler(async (req, res) => {
 });
 
 exports.registerUser = handler(async (req, res) => {
-  console.log(req.body);
   const { email, name, password } = req.body;
   if (!name || !email || !password) {
     rse.status(401);

@@ -26,7 +26,7 @@ function CartScreen(props) {
     dispatch(removeFromCart(id));
   };
   const checkoutHandler = () => {
-    props.history.push("/login?redirect=shipping");
+    props.history.push("/signin?redirect=shipping");
   };
   React.useEffect(() => {
     if (productId) {

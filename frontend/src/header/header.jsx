@@ -13,19 +13,22 @@ const Header = () => {
             <Navbar.Brand>MY-SHOP</Navbar.Brand>
           </LinkContainer>
 
-          <Nav className="ml-auto">
-            <LinkContainer to="/cart">
-              <Nav.Link className="mx-2">
-                <i className="fas fa-shopping-cart mx-1"></i> CART
-              </Nav.Link>
-            </LinkContainer>
-            <LinkContainer to="/signin">
-              <Nav.Link className="mx-2">
-                <i className="fas fa-user mx-1 shadow-none"></i>
-                SIGNIN
-              </Nav.Link>
-            </LinkContainer>
-          </Nav>
+          <Navbar.Toggle aria-controls="basic-navbar-nav" />
+          <Navbar.Collapse id="basic-navbar-nav">
+            <Nav className="ml-auto">
+              <LinkContainer to="/cart">
+                <Nav.Link className="mx-2">
+                  <i className="fas fa-shopping-cart mx-1"></i> CART
+                </Nav.Link>
+              </LinkContainer>
+              <LinkContainer to="/signin">
+                <Nav.Link className="mx-2">
+                  <i className="fas fa-user mx-1 shadow-none"></i>
+                  SIGNIN
+                </Nav.Link>
+              </LinkContainer>
+            </Nav>
+          </Navbar.Collapse>
         </Container>
       </Navbar>
     </>
