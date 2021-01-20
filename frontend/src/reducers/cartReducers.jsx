@@ -1,4 +1,3 @@
-import { bindActionCreators } from "redux";
 
 export default (state = { cartItems: [] }, { type, payload }) => {
   switch (type) {
