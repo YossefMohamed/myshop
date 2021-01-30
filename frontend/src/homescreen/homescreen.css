@@ -1,3 +1,51 @@
 .homescreen__main {
-  min-height: 75vh;
+  min-height: 55vh;
+}
+.card--title {
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.card--body {
+  padding: 0px;
+}
+.card__item {
+  position: relative;
+}
+.cart--icon {
+  font-size: 2rem;
+  text-align: center;
+}
+
+.card:hover .love--icon {
+  opacity: 1;
+}
+
+.love--icon {
+  opacity: 0;
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  font-size: 1.5rem;
+  color: #9b9494;
+}
+.love--icon:hover {
+  color: rgb(224, 63, 63);
+}
+
+.btn--enable {
+  color: black;
+  cursor: pointer;
+}
+
+.btn--disable {
+  color: #9b9494;
+}
+
+.no-cart-items {
+  position: absolute;
+  top: 55%;
+  left: 50%;
+  transform: translate(-50%, -30%);
+  color: white;
+  font-size: 13px;
 }

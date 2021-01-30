@@ -3,10 +3,11 @@ import { Container } from "react-bootstrap";
 import Footer from "./footer/footer";
 import HomeScreen from "./homescreen/homescreen";
 import ProductScreen from "./productScreen/productSreen";
-
+import "./app.css";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import CartScreen from "./cartScreen/cartScreen";
 import loginScreen from "./loginScreen/loginScreen";
+import Register from "./registerScreen/register";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
           <Route path="/product/:id" component={ProductScreen} />
           <Route path="/cart/:id?" component={CartScreen} />
           <Route path="/signin" component={loginScreen} />
+          <Route path="/Register" component={Register} />
         </Container>
       </div>
 

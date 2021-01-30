@@ -5,16 +5,12 @@ import { LinkContainer } from "react-router-bootstrap";
 const Menu = (props) => {
   console.log(props.clicked);
   const display = `props.clicked?"block" : "none"`;
-  console.log(display);
   return (
     <div
       className="info--menu"
       style={{ display: `${props.clicked ? "block" : "none"}` }}
     >
-      <ul>
-        <li>en</li>
-        <li>ar</li>
-      </ul>
+      <ul></ul>
     </div>
   );
 };

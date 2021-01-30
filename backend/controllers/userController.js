@@ -1,9 +1,8 @@
-const { json } = require("express");
 const handler = require("express-async-handler");
 const User = require("../models/userModel");
 const signIn = require("../utils/signInJWT");
 
-exports.authUser = handler(async (req, res) => {
+exports.login = handler(async (req, res) => {
   const { email, password } = req.body;
   const user = await User.findOne({ email }).select("-__v");
   if (user && (await user.matchPassword(password))) {
@@ -30,17 +29,28 @@ exports.getUserProfile = handler(async (req, res) => {
 
 exports.registerUser = handler(async (req, res) => {
   const { email, name, password } = req.body;
-  if (!name || !email || !password) {
-    rse.status(401);
-    throw new Error("Eh dah b2a ??");
+  try {
+    if (!name || !email || !password) {
+      rse.status(401);
+      throw new Error("Eh dah b2a ??");
+    }
+    const checkMail = await User.findOne({ email });
+    if (checkMail) {
+      res.status(404);
+      throw new Error("There's Account with this Email !");
+    }
+    const user = await User.create({
+      email,
+      name,
+      password,
+    });
+    res.status(201).json({
+      ...user._doc,
+      token: signIn(user._id),
+    });
+  } catch (error) {
+    console.log(error.message);
+    res.status(404);
+    throw new Error(error.message);
   }
-  const user = await User.create({
-    email,
-    name,
-    password,
-  });
-  res.status(201).json({
-    ...user._doc,
-    token: signIn(user._id),
-  });
 });

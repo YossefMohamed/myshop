@@ -1,5 +1,5 @@
 import React from "react";
-import Massage from "./../message/message";
+import Massage from "../message/message";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import {
