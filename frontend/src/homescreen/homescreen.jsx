@@ -17,7 +17,6 @@ const HomeScreen = (props) => {
   useEffect(() => {
     props.dispatch(listProducts());
   }, []);
-  console.log(props);
   const { products, error } = props.productList;
   return (
     <div className="homescreen__main">
@@ -28,13 +27,22 @@ const HomeScreen = (props) => {
       ) : props.productList.error ? (
         <Massage variant="danger">{error}</Massage>
       ) : (
-        <Row>
-          {products.map((e, index) => (
-            <Col sm={12} md={6} lg={6} xl={4} key={index}>
-              <Product product={e} />
-            </Col>
-          ))}
-        </Row>
+        <>
+          <div className="carousel">
+            {products.map((e) => (
+              <div key key={e.product}>
+                <img src={e.image} />
+              </div>
+            ))}
+          </div>
+          <Row>
+            {products.map((e, index) => (
+              <Col sm={12} md={6} lg={6} xl={4} key={index}>
+                <Product product={e} page="home" />
+              </Col>
+            ))}
+          </Row>
+        </>
       )}
     </div>
   );

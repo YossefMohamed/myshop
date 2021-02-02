@@ -25,7 +25,7 @@ const Header = () => {
     const other = ["bag", "love"].filter((e) => e !== type);
     setOptions({ [other]: false, [type]: !options[type] });
   };
-  console.log(wishListItemsState);
+  // console.log(wishListItemsState);
   const handleSearch = () => {
     setSearch(!search);
     setOptions({
@@ -40,9 +40,9 @@ const Header = () => {
     noCartItems += element.qty;
   });
 
-  console.log(noCartItems);
+  // console.log(noCartItems);
   React.useEffect(() => {
-    console.log(window.innerWidth);
+    // console.log(window.innerWidth);
   }, [window.innerWidth]);
   return (
     <nav>
@@ -51,7 +51,7 @@ const Header = () => {
         <Container className="nav__main--flex">
           <div className="nav__main--logo">
             <Link to="/">
-              <i class="fas fa-shipping-fast"></i>
+              <img src="logo.png" alt="logo" />
             </Link>
           </div>
           <div className="nav__main--search">
@@ -66,35 +66,35 @@ const Header = () => {
                 {noCartItems}
               </div>
               <Link onClick={(e) => hanldePopUp("bag")}>
-                <i class="fas fa-shopping-bag"></i>{" "}
+                <i className="fas fa-shopping-bag"></i>{" "}
               </Link>
               <Popup
                 clickMe={hanldePopUp}
                 type="Cart page"
-                link="cart"
+                linkTo="cart"
                 display={{ display: options.bag }}
                 cartItems={cartItems}
               />
             </div>
             <div className="option option--love">
               <div onClick={(e) => hanldePopUp("love")}>
-                <i class="fas fa-heart"></i>
+                <i className="fas fa-heart"></i>
               </div>
               <Popup
                 display={{ display: options.love }}
                 clickMe={hanldePopUp}
                 type="Wish List page"
-                link="wishlist"
+                linkTo="wishlist"
                 cartItems={wishListItemsState}
               />
             </div>
             <div className="option">
               <Link to="/signin">
-                <i class="fas fa-user"></i>
+                <i className="fas fa-user"></i>
               </Link>
             </div>
             <div className="option option--love" onClick={handleSearch}>
-              <i class="fas fa-search"></i>{" "}
+              <i className="fas fa-search"></i>{" "}
             </div>
           </div>
         </Container>

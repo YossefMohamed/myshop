@@ -79,6 +79,9 @@
   font-size: 1.75rem;
   width: 25%;
 }
+.nav__main--logo img {
+  max-height: 3rem;
+}
 
 .nav__main--search {
   width: 100%;
@@ -150,4 +153,3 @@ a {
   cursor: pointer;
   text-anchor: unset;
 }
-

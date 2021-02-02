@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { Card, Col, Row } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { addToWishList } from "../actions/whishlistAction";
+import { addToWishList, removeFromWishList } from "../actions/whishlistAction";
 import Rating from "../rating/rating";
 import { addToCart } from "./../actions/cartAction";
 function Product(props) {
@@ -18,26 +18,37 @@ function Product(props) {
 
   useEffect(() => {
     wishListItems.map((e) => {
-      console.log(e);
       if (e.product === props.product._id) {
         setWishListed(true);
       }
     });
-    console.log(wishListed);
-  }, []);
+  }, [wishListItems]);
 
   return (
     <div>
       <Card className="my-3 rounded w-100 card__item">
         <div
-          className={`love--icon ${wishListed ? "loved" : ""}`}
+          className={`love--icon ${
+            wishListed || props.page === "wishList" ? "loved" : ""
+          }`}
           onClick={() => {
-            if (!wishListed) {
+            console.log(!props.product.product, props);
+            if (props.page !== "wishList") {
+              console.log("Ahahahahhhhah");
               dispatch(addToWishList(props.product._id));
             }
           }}
         >
-          <i class="fas fa-heart"></i>
+          <i className="fas fa-heart"></i>
+        </div>
+        <div
+          className={`trash--icon ${props.page === "home" ? "d-none" : ""}`}
+          onClick={() => {
+            dispatch(removeFromWishList(props.product.product));
+          }}
+        >
+          {" "}
+          <i className="fas fa-trash-alt"></i>
         </div>
         <Link to={`/product/${props.product._id}`}>
           <Card.Img
@@ -88,7 +99,7 @@ function Product(props) {
                 }}
                 as="button"
               >
-                <i class="fa fa-cart-plus" aria-hidden="true"></i>
+                <i className="fa fa-cart-plus" aria-hidden="true"></i>
               </Col>
             </Row>
           </Card.Text>

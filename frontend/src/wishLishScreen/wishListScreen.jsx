@@ -7,18 +7,20 @@ function WishListScreen(props) {
   const wishListItems = useSelector((state) => state.wishList.wishListItems);
   return (
     <div>
+      {console.log(this)}
+
       <div className="homescreen__main">
-        <Row>
-          {wishListItems.length >= 0 ? (
-            wishListItems.map((e, index) => (
+        {wishListItems.length !== 0 ? (
+          <Row>
+            {wishListItems.map((e, index) => (
               <Col sm={12} md={6} lg={6} xl={4} key={index}>
-                <Product product={e} />
+                <Product product={e} page={"wishList"} />
               </Col>
-            ))
-          ) : (
-            <Message>No Items !</Message>
-          )}
-        </Row>
+            ))}
+          </Row>
+        ) : (
+          <Message>No Items !</Message>
+        )}
       </div>
     </div>
   );

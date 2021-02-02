@@ -3,6 +3,9 @@
 }
 .card--title {
   border-bottom: 1px solid #e5e5e5;
+  min-height: 5rem;
+  display: flex;
+  align-items: center;
 }
 
 .card--body {
@@ -32,6 +35,19 @@ button {
   cursor: pointer;
   color: #9b9494;
 }
+.trash--icon {
+  opacity: 0.33;
+  position: absolute;
+  top: 3.5rem;
+  left: 1rem;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: #9b9494;
+}
+
+.trash--icon:hover {
+  opacity: 1;
+}
 .love--icon:hover {
   color: rgb(224, 63, 63);
 }
@@ -48,6 +64,9 @@ button {
   color: #9b9494;
 }
 
+.card-img-top {
+  height: 25rem !important;
+}
 .no-cart-items {
   position: absolute;
   top: 55%;
@@ -55,4 +74,13 @@ button {
   transform: translate(-50%, -30%);
   color: white;
   font-size: 13px;
+}
+
+/*carousel*/
+
+.carousel {
+  width: 500%;
+  height: 40rem;
+  display: flex;
+  background-color: violet;
 }

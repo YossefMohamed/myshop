@@ -3,7 +3,7 @@ import { LinkContainer } from "react-router-bootstrap";
 // import { BiCartAlt } from "react-icons/bi";
 
 const Menu = (props) => {
-  console.log(props.clicked);
+  // console.log(props.clicked);
   const display = `props.clicked?"block" : "none"`;
   return (
     <div

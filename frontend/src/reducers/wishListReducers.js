@@ -1,4 +1,4 @@
-export default (state = { wishList: [] }, { type, payload }) => {
+export default (state = { wishListItems: [] }, { type, payload }) => {
   switch (type) {
     case "WISH_ADD_ITEM":
       const existItem = state.wishListItems.find(

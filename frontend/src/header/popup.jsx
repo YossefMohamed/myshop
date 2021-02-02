@@ -28,9 +28,9 @@ class Popup extends Component {
       <div className="popup__container" ref={this.popUpRef}>
         <div className="popup" style={{ display }}>
           <div className="cartItems__popup">
-            {this.props.cartItems || this.props.cartItems === 0 ? (
-              this.props.cartItems.map((item) => (
-                <div className="cart-item">
+            {this.props.cartItems || this.props.cartItems.length === 0 ? (
+              this.props.cartItems.map((item, indx) => (
+                <div className="cart-item" key={indx}>
                   <img src={item.image} alt={item.name} />
                   <div className="item-details">
                     <span className="name">{item.name}</span>
@@ -46,7 +46,7 @@ class Popup extends Component {
               </div>
             )}
           </div>
-          <Link to={`/${this.props.link}`}>
+          <Link to={`/${this.props.linkTo}`}>
             <button>{this.props.type}</button>
           </Link>
         </div>

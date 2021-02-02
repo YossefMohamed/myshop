@@ -14,13 +14,13 @@ const Info = () => {
           <div className="mr-auto contect__info">
             <div className="nav__content--flex">
               <div className="nav__email">
-                <i class="fas fa-envelope"></i>
+                <i className="fas fa-envelope"></i>
                 <span className="nav__email--content">
                   yossef.mohamed@gmail.com
                 </span>
               </div>
               <div className="nav__phone">
-                <i class="fas fa-phone-alt"></i>
+                <i className="fas fa-phone-alt"></i>
                 <span className="nav__phone--content">01151784019</span>
               </div>
             </div>
@@ -31,20 +31,20 @@ const Info = () => {
                 <div className="social">
                   <ul>
                     <li>
-                      <i class="fab fa-facebook-f"></i>
+                      <i className="fab fa-facebook-f"></i>
                     </li>
                     <li>
-                      <i class="fab fa-twitter"></i>
+                      <i className="fab fa-twitter"></i>
                     </li>
                     <li>
-                      <i class="fab fa-instagram"></i>{" "}
+                      <i className="fab fa-instagram"></i>{" "}
                     </li>
                   </ul>
                 </div>
               </div>
               <div className="nav__phone">
                 <Menu clicked={clicked} />
-                <i class="fas fa-globe-americas"></i>{" "}
+                <i className="fas fa-globe-americas"></i>{" "}
                 <strong
                   onClick={(e) => {
                     handleOnClick();

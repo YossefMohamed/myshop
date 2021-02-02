@@ -17,7 +17,7 @@ function Message(props) {
 
   return (
     <div className={`m-auto ${hide ? "d-none" : ""}`}>
-      <Alert variant="danger">
+      <Alert variant={props.variant}>
         <p>{props.children}</p>
       </Alert>
     </div>
