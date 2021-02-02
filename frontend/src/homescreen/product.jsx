@@ -2,26 +2,41 @@ import React, { useEffect } from "react";
 import { Card, Col, Row } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import { addToWishList } from "../actions/whishlistAction";
 import Rating from "../rating/rating";
 import { addToCart } from "./../actions/cartAction";
 function Product(props) {
+  const [wishListed, setWishListed] = React.useState(false);
   const dispatch = useDispatch();
   let cartItemsQty = 0;
-
   useSelector((state) => {
     return state.cart.cartItems.map((e) => {
       if (e.product === props.product._id) cartItemsQty += e.qty;
     });
   });
-  console.log(
-    props.product.countInStock && cartItemsQty !== props.product.countInStock,
-    "Stock"
-  );
+  const wishListItems = useSelector((state) => state.wishList.wishListItems);
+
+  useEffect(() => {
+    wishListItems.map((e) => {
+      console.log(e);
+      if (e.product === props.product._id) {
+        setWishListed(true);
+      }
+    });
+    console.log(wishListed);
+  }, []);
 
   return (
     <div>
       <Card className="my-3 rounded w-100 card__item">
-        <div className="love--icon">
+        <div
+          className={`love--icon ${wishListed ? "loved" : ""}`}
+          onClick={() => {
+            if (!wishListed) {
+              dispatch(addToWishList(props.product._id));
+            }
+          }}
+        >
           <i class="fas fa-heart"></i>
         </div>
         <Link to={`/product/${props.product._id}`}>
@@ -52,16 +67,15 @@ function Product(props) {
                 />
               </Col>
               <Col
-                className={`border cart--icon border-top-0 py-2 ${
+                className={`py-2 ${
                   props.product.countInStock &&
                   cartItemsQty !== props.product.countInStock
                     ? "btn--enable"
                     : "btn--disable"
-                }`}
+                } cart--icon`}
                 sm={3}
                 onClick={() => {
                   if (props.product.countInStock) {
-                    console.log(cartItemsQty, "CartItemAdded");
                     dispatch(
                       addToCart(
                         props.product._id,
@@ -72,6 +86,7 @@ function Product(props) {
                     );
                   }
                 }}
+                as="button"
               >
                 <i class="fa fa-cart-plus" aria-hidden="true"></i>
               </Col>

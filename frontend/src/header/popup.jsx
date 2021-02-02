@@ -6,14 +6,28 @@ import "./popup.css";
 class Popup extends Component {
   constructor(props) {
     super(props);
+    this.popUpRef = React.createRef();
   }
+  // componentDidMount() {
+  //   let clicked = 0;
+  //   document.addEventListener("click", (event) => {
+  //     if (!this.popUpRef.current.contains(event.target)) {
+  //       if (clicked === 0) {
+  //         clicked++;
+  //       } else {
+  //         this.props.clickMe("bag");
+  //         clicked = 0;
+  //       }
+  //     }
+  //   });
+  // }
+
   render() {
     const display = this.props.display.display === true ? "block" : "none";
     return (
-      <div className="popup__container">
+      <div className="popup__container" ref={this.popUpRef}>
         <div className="popup" style={{ display }}>
           <div className="cartItems__popup">
-            {console.log(this.props.cartItems)}
             {this.props.cartItems || this.props.cartItems === 0 ? (
               this.props.cartItems.map((item) => (
                 <div className="cart-item">
@@ -32,8 +46,8 @@ class Popup extends Component {
               </div>
             )}
           </div>
-          <Link to="/cart">
-            <button>Cart Page</button>
+          <Link to={`/${this.props.link}`}>
+            <button>{this.props.type}</button>
           </Link>
         </div>
       </div>

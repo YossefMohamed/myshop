@@ -4,7 +4,6 @@ export default (state = { cartItems: [] }, { type, payload }) => {
       const existItem = state.cartItems.find(
         (x) => x.product === payload.product
       );
-      console.log(payload.qty);
       if (existItem) {
         return {
           ...state,

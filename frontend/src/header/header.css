@@ -145,3 +145,9 @@ a {
   text-decoration: none;
   color: inherit;
 }
+
+.no-cart-items {
+  cursor: pointer;
+  text-anchor: unset;
+}
+

@@ -14,24 +14,31 @@
 .cart--icon {
   font-size: 2rem;
   text-align: center;
+  border: none;
+}
+button {
+  outline: none !important;
 }
 
 .card:hover .love--icon {
   opacity: 1;
 }
-
 .love--icon {
-  opacity: 0;
+  opacity: 0.33;
   position: absolute;
   top: 1rem;
   left: 1rem;
   font-size: 1.5rem;
+  cursor: pointer;
   color: #9b9494;
 }
 .love--icon:hover {
   color: rgb(224, 63, 63);
 }
-
+.loved {
+  color: rgb(224, 63, 63);
+  opacity: 0.33;
+}
 .btn--enable {
   color: black;
   cursor: pointer;

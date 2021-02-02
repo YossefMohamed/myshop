@@ -6,14 +6,19 @@ import {
 } from "./reducers/productReducers";
 import { userLoginReducer, userRegisterReducer } from "./reducers/userReducers";
 import cartReducers from "./reducers/cartReducers";
+import wishListReducers from "./reducers/wishListReducers";
 const devTools = require("redux-devtools-extension");
 const cartItemsFromStorage = localStorage.getItem("cartItems")
   ? JSON.parse(localStorage.getItem("cartItems"))
   : [];
+const wishListFromStorage = localStorage.getItem("wishListItems")
+  ? JSON.parse(localStorage.getItem("wishListItems"))
+  : [];
 const userInfoFromStorage = localStorage.getItem("userInfo")
-  ? JSON.parse(localStorage.getItem("cartItems"))
+  ? JSON.parse(localStorage.getItem("userInfo"))
   : null;
 const initialState = {
+  wishList: { wishListItems: wishListFromStorage },
   cart: {
     cartItems: cartItemsFromStorage,
   },
@@ -26,6 +31,7 @@ const reducer = combineReducers({
   cart: cartReducers,
   userLogin: userLoginReducer,
   userRegister: userRegisterReducer,
+  wishList: wishListReducers,
 });
 
 const store = createStore(

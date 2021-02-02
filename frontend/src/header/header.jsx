@@ -18,10 +18,14 @@ const Header = () => {
     love: false,
   });
   const cartItems = useSelector((state) => state.cart.cartItems);
+  const wishListItemsState = useSelector(
+    (state) => state.wishList.wishListItems
+  );
   const hanldePopUp = (type) => {
     const other = ["bag", "love"].filter((e) => e !== type);
     setOptions({ [other]: false, [type]: !options[type] });
   };
+  console.log(wishListItemsState);
   const handleSearch = () => {
     setSearch(!search);
     setOptions({
@@ -29,6 +33,7 @@ const Header = () => {
       love: false,
     });
   };
+
   let noCartItems = 0;
 
   cartItems.forEach((element) => {
@@ -63,14 +68,25 @@ const Header = () => {
               <Link onClick={(e) => hanldePopUp("bag")}>
                 <i class="fas fa-shopping-bag"></i>{" "}
               </Link>
-              <Popup display={{ display: options.bag }} cartItems={cartItems} />
+              <Popup
+                clickMe={hanldePopUp}
+                type="Cart page"
+                link="cart"
+                display={{ display: options.bag }}
+                cartItems={cartItems}
+              />
             </div>
-            <div
-              className="option option--love"
-              onClick={(e) => hanldePopUp("love")}
-            >
-              <i class="fas fa-heart"></i>
-              <Popup display={{ display: options.love }} />
+            <div className="option option--love">
+              <div onClick={(e) => hanldePopUp("love")}>
+                <i class="fas fa-heart"></i>
+              </div>
+              <Popup
+                display={{ display: options.love }}
+                clickMe={hanldePopUp}
+                type="Wish List page"
+                link="wishlist"
+                cartItems={wishListItemsState}
+              />
             </div>
             <div className="option">
               <Link to="/signin">
