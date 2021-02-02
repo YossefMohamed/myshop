@@ -5,6 +5,9 @@
 body {
   font-family: "Oswald";
 }
+/* html {
+  font-size: 13px;
+} */
 .loader {
   display: flex;
   justify-content: center;
@@ -16,17 +19,14 @@ body {
   width: 7px;
 }
 
-/* Track */
 ::-webkit-scrollbar-track {
   background: #f1f1f1;
 }
 
-/* Handle */
 ::-webkit-scrollbar-thumb {
   background: #888;
 }
 
-/* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
   background: #555;
 }
