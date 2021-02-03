@@ -1,0 +1,155 @@
+.info {
+  padding: 0.5rem 0;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.nav__email--content {
+  margin: 0 0.75rem;
+  padding-right: 1rem;
+  border-right: 1px solid #e5e5e5;
+}
+
+.nav__phone--content {
+  margin: 0 0.75rem;
+  padding-right: 1rem;
+
+  border-right: 1px solid #e5e5e5;
+}
+.social ul {
+  list-style: none;
+}
+
+.social li {
+  display: inline-flex;
+  margin: 0 0.75rem;
+}
+
+.nav__content--flex {
+  display: flex;
+}
+
+.social {
+  display: flex;
+}
+
+.social ul {
+  padding-right: 1rem;
+  border-right: 1px solid #e5e5e5;
+  margin: 0 1rem;
+}
+
+.nav__phone {
+  display: flex;
+  align-items: center;
+}
+.menu-arrow {
+  transform: rotate(-90deg);
+  font-size: 1rem;
+  position: relative;
+}
+.nav__phone strong {
+  margin: 0 0.25rem;
+}
+
+.info--menu {
+  position: absolute;
+  top: 2rem;
+  z-index: 999;
+  transform: translateX(-30%);
+}
+.info--menu li {
+  padding: 0.75rem 1.5rem;
+  border: 1px solid #e5e5e5;
+  background-color: white;
+}
+.info--menu ul {
+  list-style: none;
+}
+
+.nav__main {
+  padding: 1rem 0;
+  border-bottom: 1px solid #e5e5e5;
+}
+.nav__main--flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.nav__main--logo {
+  font-size: 1.75rem;
+  width: 25%;
+}
+.nav__main--logo img {
+  max-height: 3rem;
+}
+
+.nav__main--search {
+  width: 100%;
+  position: relative;
+}
+
+.nav__main--search input {
+  outline: 0;
+  border: 1px solid #e5e5e5;
+  width: 100%;
+  padding: 0.5rem 0.5rem;
+  border-radius: 1rem;
+  font-size: 1.1rem;
+}
+
+.nav__main--search::after {
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  content: "\f002";
+  position: absolute;
+  right: 0;
+  top: 50%;
+  font-size: 1.25rem;
+  transform: translate(-50%, -50%);
+}
+
+.nav__main--options {
+  display: flex;
+  width: 25%;
+  font-size: 1.75rem;
+  justify-content: flex-end;
+}
+
+.option {
+  margin: 0 1rem;
+  position: relative;
+}
+
+nav {
+  position: sticky;
+  top: 0;
+  background-color: white;
+  margin-bottom: 5rem;
+  z-index: 9999999;
+  box-shadow: 0 0.25px 8px rgba(109, 111, 113, 0.3);
+}
+
+.nav__main--search {
+  display: none;
+}
+
+.search--option {
+  margin: 1rem auto 0.25rem;
+  display: block;
+}
+
+@media screen and (max-width: 995px) {
+  .info {
+    display: none;
+  }
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.no-cart-items {
+  cursor: pointer;
+  text-anchor: unset;
+}

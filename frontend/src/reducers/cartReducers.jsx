@@ -1,5 +1,3 @@
-import { bindActionCreators } from "redux";
-
 export default (state = { cartItems: [] }, { type, payload }) => {
   switch (type) {
     case "CART_ADD_ITEM":
@@ -9,8 +7,8 @@ export default (state = { cartItems: [] }, { type, payload }) => {
       if (existItem) {
         return {
           ...state,
-          cartItems: state.cartItems.map((x) =>
-            x.product === existItem.product ? payload : x
+          cartItems: state.cartItems.map((el) =>
+            el.product === existItem.product ? payload : el
           ),
         };
       }

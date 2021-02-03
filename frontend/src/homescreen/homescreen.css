@@ -1,3 +1,116 @@
 .homescreen__main {
-  min-height: 75vh;
+  min-height: 55vh;
+}
+.card--title {
+  border-bottom: 1px solid #e5e5e5;
+  min-height: 5rem;
+  display: flex;
+  align-items: center;
+}
+
+.card--body {
+  padding: 0px;
+}
+.card__item {
+  position: relative;
+}
+.cart--icon {
+  font-size: 2rem;
+  text-align: center;
+  border: none;
+}
+button {
+  outline: none !important;
+}
+
+.card:hover .love--icon {
+  opacity: 1;
+}
+.love--icon {
+  opacity: 0.33;
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: #9b9494;
+}
+.trash--icon {
+  opacity: 0.33;
+  position: absolute;
+  top: 3.5rem;
+  left: 1rem;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: #9b9494;
+}
+
+.trash--icon:hover {
+  opacity: 1;
+}
+.love--icon:hover {
+  color: rgb(224, 63, 63);
+}
+.loved {
+  color: rgb(224, 63, 63);
+  opacity: 0.33;
+}
+.btn--enable {
+  color: black;
+  cursor: pointer;
+}
+
+.btn--disable {
+  color: #9b9494;
+}
+
+.card-img-top {
+  height: 25rem !important;
+}
+.no-cart-items {
+  position: absolute;
+  top: 55%;
+  left: 50%;
+  transform: translate(-50%, -30%);
+  color: white;
+  font-size: 13px;
+}
+
+/*carousel*/
+
+.carousel {
+  width: 100%;
+  height: 30rem;
+  display: flex;
+  flex-grow: 1;
+  position: relative;
+  overflow: hidden;
+}
+
+.carousel__container--image {
+  min-width: 100%;
+  transition: 500ms all ease-in-out;
+
+  z-index: -5;
+}
+.carousel__container--image img {
+  width: 100%;
+  height: 100%;
+}
+.carousel__button {
+  position: absolute;
+  background: transparent;
+  width: 10%;
+  height: 100%;
+  border: 0;
+  outline: 0;
+  font-size: 3rem;
+}
+.carousel--left {
+  /* background-image: linear-gradient(to right, rgb(174, 169, 169), transparent); */
+  left: 0;
+}
+.carousel--right {
+  /* background-image: linear-gradient(to left, rgb(174, 169, 169), transparent); */
+  right: 0;
 }

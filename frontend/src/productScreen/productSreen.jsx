@@ -13,7 +13,7 @@ import { Link } from "react-router-dom";
 import Rating from "./../rating/rating";
 import { listProductDetails } from "./../actions/productAction";
 import { connect } from "react-redux";
-import Loader from "../loader/loader";
+import Loader from "react-loader-spinner";
 import Massage from "../message/message";
 function ProductScreen(props) {
   const [qty = 1, setQtu] = useState();
@@ -30,7 +30,9 @@ function ProductScreen(props) {
   return (
     <>
       {loading ? (
-        <Loader />
+        <div className="loader">
+          <Loader type="Circles" color="black" height={100} width={100} />
+        </div>
       ) : props.product.error ? (
         <Massage variant="danger">{error}</Massage>
       ) : (

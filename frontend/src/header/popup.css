@@ -1,0 +1,112 @@
+.cart-item {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  height: 80px;
+}
+
+.cart-item + .cart-item {
+  margin-top: 15px;
+}
+
+.cart-item img {
+  width: 30%;
+}
+
+.cart-item .item-details {
+  width: 70%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  padding: 10px 10px;
+}
+
+.cart-item .item-details .price {
+  font-size: 16px;
+  color: black;
+}
+
+.cart-item .item-details .name {
+  font-size: 14px;
+}
+
+.popup {
+  /* width: 20rem; */
+  position: absolute;
+  z-index: 9991;
+  right: 0;
+  top: calc(100% + 10px);
+  border: 1px solid #e5e5e5;
+  background-color: #fff;
+  width: 18rem;
+  height: 20rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.cartItems__popup {
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  padding: 15px;
+  height: 85%;
+  overflow-y: auto;
+}
+
+.popup button {
+  outline: 0;
+  border: 0;
+  height: 15%;
+  width: 100%;
+  background: black;
+  color: white;
+  border: 1px black solid;
+  /* margin: 2rem 0; */
+}
+
+.popup button a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.popup button:hover {
+  color: black;
+  background-color: white;
+}
+
+.empty--cart {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  text-align: center;
+}
+/*# sourceMappingURL=popup.css.map */

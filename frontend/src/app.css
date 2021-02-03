@@ -1,0 +1,32 @@
+* {
+  box-sizing: border-box;
+  transition: all 100ms ease-in;
+}
+body {
+  font-family: "Oswald";
+}
+/* html {
+  font-size: 13px;
+} */
+.loader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+::-webkit-scrollbar {
+  width: 7px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #888;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}

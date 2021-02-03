@@ -1,15 +1,30 @@
+import { set } from "mongoose";
 import React from "react";
 import { Alert } from "react-bootstrap";
 
-function Massage(props) {
+function Message(props) {
+  const [hide, setHide] = React.useState(false);
+  React.useEffect(() => {
+    setTimeout(() => {
+      console.log(props.children);
+      if (
+        props.children === "Please Fill All the Fields !!" ||
+        props.children === "Password And Password Confirmation is Not Equal !"
+      )
+        setHide(true);
+    }, 3000);
+  });
+
   return (
-    <div>
-      <Alert variant={props.variant}>{props.children}</Alert>
+    <div className={`m-auto ${hide ? "d-none" : ""}`}>
+      <Alert variant={props.variant}>
+        <p>{props.children}</p>
+      </Alert>
     </div>
   );
 }
 
-Massage.defaultProps = {
+Message.defaultProps = {
   variant: "info",
 };
-export default Massage;
+export default Message;

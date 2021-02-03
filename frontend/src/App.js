@@ -3,24 +3,38 @@ import { Container } from "react-bootstrap";
 import Footer from "./footer/footer";
 import HomeScreen from "./homescreen/homescreen";
 import ProductScreen from "./productScreen/productSreen";
-
-import { BrowserRouter, Route, Switch } from "react-router-dom";
+import "./app.css";
+import { BrowserRouter, Route } from "react-router-dom";
 import CartScreen from "./cartScreen/cartScreen";
-function App() {
+import loginScreen from "./loginScreen/loginScreen";
+import Register from "./registerScreen/register";
+import WishListScreen from "./wishLishScreen/wishListScreen";
+
+import React from "react";
+import ScrollTop from "./utiles/scroll";
+function App(props) {
+  React.useEffect(() => {
+    console.log(props);
+    window.scrollTo(0, 0);
+  }, [props.match]);
+
   return (
     <BrowserRouter>
-      <Header />
-      <div className="my-4 main">
-        <Switch>
+      <ScrollTop>
+        <Header />
+        <div className="my-4 main">
           <Container>
-            <Route path="/" component={HomeScreen} exact="true" />
-            <Route path="/product/:id" component={ProductScreen} exact="true" />
-            <Route path="/cart/:id?" component={CartScreen} exact="true" />
+            <Route path="/" component={HomeScreen} exact />
+            <Route path="/product/:id" component={ProductScreen} />
+            <Route path="/cart/:id?" component={CartScreen} />
+            <Route path="/wishList" component={WishListScreen} />
+            <Route path="/signin" component={loginScreen} />
+            <Route path="/Register" component={Register} />
           </Container>
-        </Switch>
-      </div>
+        </div>
 
-      <Footer />
+        <Footer />
+      </ScrollTop>
     </BrowserRouter>
   );
 }

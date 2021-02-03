@@ -1,0 +1,153 @@
+.loginScreen {
+  margin: 3rem 0;
+}
+
+.register {
+  width: 55%;
+  border: 1px solid #e5e5e5;
+  padding: 3rem 1rem 1rem;
+}
+.container__flex {
+  display: flex;
+  justify-content: center;
+  button {
+    font-size: 1.1rem;
+    font-weight: bold;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 2px 2px 0px,
+      rgba(0, 0, 0, 0.24) 0px 0px 1px 0px;
+  }
+  h2 {
+    font-weight: 800;
+  }
+
+  .signin {
+    width: 55%;
+    border: 1px solid #e5e5e5;
+    padding: 3rem 1rem 1rem;
+  }
+}
+
+.required {
+  color: red;
+}
+label {
+  display: block;
+  margin: 1rem 0;
+}
+.form__input {
+  outline: 0;
+  border: 1px solid #e5e5e5;
+  width: 100%;
+  height: 40px;
+  padding: 0 1rem;
+}
+.form__password--reset {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  font-size: 0.75rem;
+  margin: 1rem 0;
+}
+.login__form--facebook {
+  outline: 0;
+  border: 0;
+  height: 50px;
+  width: 100%;
+  font-size: 2rem;
+  background: royalblue;
+  color: white;
+  border: 1px royalblue solid;
+  margin: 1rem 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  &:hover {
+    background-color: white;
+    color: royalblue;
+  }
+}
+.login__form--submit {
+  outline: 0;
+  border: 0;
+  height: 50px;
+  width: 100%;
+  background: black;
+  color: white;
+  border: 1px black solid;
+  margin: 0.5rem 0;
+  &:hover {
+    background-color: white;
+    color: black;
+  }
+}
+.register {
+  .register__form--submit {
+    outline: 0;
+    border: 0;
+    height: 50px;
+    width: 100%;
+    background: black;
+    color: white;
+    border: 1px black solid;
+    margin: 2rem 0;
+    &:hover {
+      background-color: white;
+      color: black;
+    }
+  }
+}
+.error {
+  border: 1px red solid !important;
+}
+@media screen and (max-width: 955px) {
+  .container__flex {
+    flex-direction: column;
+    .signin {
+      width: 100%;
+    }
+  }
+
+  .register {
+    margin-top: 3rem;
+    width: 100%;
+    position: relative;
+  }
+}
+
+.loader {
+  position: relative;
+  margin: 20%;
+}
+
+.registerScreen--flex {
+  display: flex;
+  justify-content: center;
+}
+.register--link {
+  a {
+    text-decoration: 0;
+  }
+}
+.register--link--or {
+  height: 1rem;
+  display: flex;
+  align-items: center;
+  margin: 1.25rem 0 1rem;
+
+  .hr {
+    width: 100%;
+    height: 1px;
+    background-color: #e5e5e5;
+    position: relative;
+    &::after {
+      content: "OR";
+      top: 50%;
+      position: absolute;
+      width: 4rem;
+      text-align: center;
+      background-color: white;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+  }
+}
