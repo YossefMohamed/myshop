@@ -10,9 +10,10 @@ const SlideShow = ({ products}) => {
         counter++
       }
     });
+    console.log(sliderProducts)
   return (
   
-          <div className="carousel rounded">
+          <div className="carousel">
             <button
               className="carousel__button carousel--right"
               onClick={() => {
@@ -39,7 +40,7 @@ const SlideShow = ({ products}) => {
             </button>
             {sliderProducts.map((e, indx) => (
               <div
-                key={indx+1}
+                key={indx}
                 className="carousel__container--image"
                 style={{ transform: `translateX(-${x}%)` }}
               >

@@ -40,7 +40,7 @@ const HomeScreen = (props) => {
           
           <Row>
             {products.map((e, index) => (
-              <Col sm={12} md={6} lg={6} xl={4} key={index}>
+              <Col sm={11} md={5} lg={5} xl={3} key={index}>
                 <Product product={e} page="home" />
               </Col>
             ))}

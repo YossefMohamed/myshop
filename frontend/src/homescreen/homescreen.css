@@ -6,6 +6,7 @@
   min-height: 5rem;
   display: flex;
   align-items: center;
+  font-weight: bolder;
 }
 
 .card--body {
@@ -65,7 +66,7 @@ button {
 }
 
 .card-img-top {
-  height: 25rem !important;
+  height: 20rem !important;
 }
 .no-cart-items {
   position: absolute;

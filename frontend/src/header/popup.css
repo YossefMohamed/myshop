@@ -46,7 +46,7 @@
   position: absolute;
   z-index: 9991;
   right: 0;
-  top: calc(100% + 10px);
+  top: calc(100% + 1.2rem);
   border: 1px solid #e5e5e5;
   background-color: #fff;
   width: 18rem;
@@ -108,5 +108,11 @@
       -ms-flex-pack: center;
           justify-content: center;
   text-align: center;
+}
+
+@media only screen and (max-width: 750px) {
+  .popup {
+    width: 100vw;
+  }
 }
 /*# sourceMappingURL=popup.css.map */

@@ -27,8 +27,8 @@ class Popup extends Component {
     return (
       <div className="popup__container" ref={this.popUpRef}>
         <div className="popup" style={{ display }}>
-          <div className="cartItems__popup">
-            {this.props.cartItems || this.props.cartItems.length === 0 ? (
+          <div className="cartItems__popup">{this.props.cartItems.length===0}
+            {this.props.cartItems || (this.props.cartItems.length === 0) ? (
               this.props.cartItems.map((item, indx) => (
                 <div className="cart-item" key={indx}>
                   <img src={item.image} alt={item.name} />
