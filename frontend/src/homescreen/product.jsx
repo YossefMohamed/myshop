@@ -34,7 +34,6 @@ function Product(props) {
           onClick={() => {
             console.log(!props.product.product, props);
             if (props.page !== "wishList") {
-              console.log("Ahahahahhhhah");
               dispatch(addToWishList(props.product._id));
             }
           }}

@@ -4,6 +4,7 @@
   display: -ms-flexbox;
   display: flex;
   height: 80px;
+  margin: 1.25rem 0;
 }
 
 .cart-item + .cart-item {
@@ -46,7 +47,7 @@
   position: absolute;
   z-index: 9991;
   right: 0;
-  top: calc(100% + 1.2rem);
+  top: calc(100% + 1.25rem);
   border: 1px solid #e5e5e5;
   background-color: #fff;
   width: 18rem;
@@ -58,6 +59,9 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
 }
 
 .cartItems__popup {
@@ -112,7 +116,26 @@
 
 @media only screen and (max-width: 750px) {
   .popup {
+    position: fixed;
+    top: 0;
+    height: 100vh;
     width: 100vw;
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+            transform: translateX(-50%);
   }
+  .popup button {
+    height: 5rem;
+  }
+  .popup .media__close--icon {
+    display: block;
+  }
+}
+
+.media__close--icon {
+  display: none;
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
 }
 /*# sourceMappingURL=popup.css.map */

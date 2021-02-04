@@ -14,6 +14,8 @@ export const addToWishList = (id) => async (dispatch, getState) => {
         image: data.image,
         price: data.price,
         countInStock: data.countInStock,
+        rating: data.rating,
+        numberReviews: data.numberReviews,
       },
     });
     localStorage.setItem(

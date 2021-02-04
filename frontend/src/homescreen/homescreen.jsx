@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, {  useEffect } from "react";
 import { connect } from "react-redux";
 import { Row, Col } from "react-bootstrap";
 import Product from "./product.jsx";
@@ -17,14 +17,7 @@ const HomeScreen = (props) => {
     props.dispatch(listProducts());
   }, []);
   const { products, error } = props.productList;
-  let sliderProducts = [];
-  let counter = 0;
-  const [x, setX] = useState(0);
-  products.map((e) => {
-    if (!(counter === 5)) {
-      sliderProducts.push(e);
-    }
-  });
+ console.log(products)
 
   return (
     <div className="homescreen__main">
@@ -34,13 +27,20 @@ const HomeScreen = (props) => {
         </div>
       ) : props.productList.error ? (
         <Massage variant="danger">{error}</Massage>
-        ) : (
-          <>
-          <Slideshow products={products} />
-          
+      ) : (
+        <>
+          <Row>
+            <Col md={7}>
+              <Slideshow products={products} height={"25rem"} />
+            </Col>
+            <Col md={5} className="silderSection p-0">
+              <Slideshow products={products} height={"12rem"} />
+              <Slideshow products={products} height={"12rem"} />
+            </Col>
+          </Row>
           <Row>
             {products.map((e, index) => (
-              <Col sm={11} md={5} lg={5} xl={3} key={index}>
+              <Col sm={12} md={6} lg={4} xl={3} key={index}>
                 <Product product={e} page="home" />
               </Col>
             ))}
@@ -50,7 +50,7 @@ const HomeScreen = (props) => {
     </div>
   );
 };
-const mapStateToProps = (state, props) => {
+const mapStateToProps = (state) => {
   return { productList: state.productList };
 };
 export default connect(mapStateToProps)(HomeScreen);

@@ -22,7 +22,7 @@ function Register(props) {
 
   const onSubimitRegisterHandler = (e) => {
     e.preventDefault();
-    console.log(message);
+    setMessage([]);
     try {
       if (!registerEmail || !registerPassword || !registerName)
         throw new Error("Please Fill All the Fields !!");
@@ -31,16 +31,12 @@ function Register(props) {
       }
       dispatch(register(registerEmail, registerPassword, registerName));
     } catch (error) {
-      console.log(error.message);
       if (!message.includes(error.message))
         setMessage([...message, error.message]);
     }
   };
 
   useEffect(() => {
-    console.log(props.history, "Check");
-
-    console.log(true);
     if (userRegister.userInfo) {
       props.history.push(redirect);
     }
@@ -55,7 +51,7 @@ function Register(props) {
       )}
 
       {userRegister.userInfo ? (
-        <Message variant="success">{userRegister.error}</Message>
+        <Message variant="success">Done !!!</Message>
       ) : (
         ""
       )}

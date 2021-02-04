@@ -8,27 +8,35 @@ class Popup extends Component {
     super(props);
     this.popUpRef = React.createRef();
   }
-  // componentDidMount() {
-  //   let clicked = 0;
-  //   document.addEventListener("click", (event) => {
-  //     if (!this.popUpRef.current.contains(event.target)) {
-  //       if (clicked === 0) {
-  //         clicked++;
-  //       } else {
-  //         this.props.clickMe("bag");
-  //         clicked = 0;
-  //       }
-  //     }
-  //   });
-  // }
+
+  componentDidMount() {
+    let clicked = 0;
+    console.log(this.props);
+    document.addEventListener("click", (event) => {
+      if (
+        !this.popUpRef.current.contains(event.target) &&
+        this.props.display.display &&
+        !(event.target.className === this.props.className)
+      ) {
+        this.props.clickMe();
+      }
+    });
+  }
 
   render() {
     const display = this.props.display.display === true ? "block" : "none";
     return (
       <div className="popup__container" ref={this.popUpRef}>
         <div className="popup" style={{ display }}>
-          <div className="cartItems__popup">{this.props.cartItems.length===0}
-            {this.props.cartItems || (this.props.cartItems.length === 0) ? (
+          <div
+            className="media__close--icon"
+            onClick={() => this.props.clickMe()}
+          >
+            <i className="fas fa-times"></i>
+          </div>
+
+          <div className="cartItems__popup">
+            {this.props.cartItems || !this.props.cartItems.length === 0 ? (
               this.props.cartItems.map((item, indx) => (
                 <div className="cart-item" key={indx}>
                   <img src={item.image} alt={item.name} />
@@ -46,9 +54,15 @@ class Popup extends Component {
               </div>
             )}
           </div>
-          <Link to={`/${this.props.linkTo}`}>
-            <button>{this.props.type}</button>
-          </Link>
+          <button>
+            <Link
+              to={`/${this.props.linkTo}`}
+              className="button-container"
+              onClick={this.props.clickMe}
+            >
+              {this.props.type}
+            </Link>
+          </button>
         </div>
       </div>
     );

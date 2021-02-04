@@ -39,7 +39,10 @@ const Header = () => {
   cartItems.forEach((element) => {
     noCartItems += element.qty;
   });
-
+  const hanldePopUpCart = () => {
+    const other = ["bag", "love"].filter((e) => e !== "bag");
+    setOptions({ [other]: false, ["bag"]: !options["bag"] });
+  };
   // console.log(noCartItems);
   React.useEffect(() => {
     // console.log(window.innerWidth);
@@ -65,15 +68,16 @@ const Header = () => {
               >
                 {noCartItems}
               </div>
-              <Link onClick={(e) => hanldePopUp("bag")}>
+              <div onClick={(e) => hanldePopUp("bag")}>
                 <i className="fas fa-shopping-bag"></i>{" "}
-              </Link>
+              </div>
               <Popup
-                clickMe={hanldePopUp}
+                clickMe={hanldePopUpCart}
                 type="Cart page"
                 linkTo="cart"
                 display={{ display: options.bag }}
                 cartItems={cartItems}
+                className="no-cart-items"
               />
             </div>
             <div className="option option--love">
@@ -85,6 +89,7 @@ const Header = () => {
                 clickMe={hanldePopUp}
                 type="Wish List page"
                 linkTo="wishlist"
+                className="fas fa-heart"
                 cartItems={wishListItemsState}
               />
             </div>

@@ -7,7 +7,7 @@ function WishListScreen(props) {
   const wishListItems = useSelector((state) => state.wishList.wishListItems);
   return (
     <div>
-      {console.log(this)}
+      {console.log(wishListItems)}
 
       <div className="homescreen__main">
         {wishListItems.length !== 0 ? (
