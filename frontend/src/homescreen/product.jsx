@@ -11,14 +11,14 @@ function Product(props) {
   let cartItemsQty = 0;
   useSelector((state) => {
     return state.cart.cartItems.map((e) => {
-      if (e.product === props.product._id) cartItemsQty += e.qty;
+      if (e._id === props.product._id) cartItemsQty += e.qty;
     });
   });
   const wishListItems = useSelector((state) => state.wishList.wishListItems);
 
   useEffect(() => {
     wishListItems.map((e) => {
-      if (e.product === props.product._id) {
+      if (e._id === props.product._id) {
         setWishListed(true);
       }
     });
@@ -26,7 +26,8 @@ function Product(props) {
 
   return (
     <div>
-      <Card className="my-3 rounded w-100 card__item">
+      {console.log(props.product, "sdfsdf")}
+      <Card className="my-3 rounded-top w-100 card__item ">
         <div
           className={`love--icon ${
             wishListed || props.page === "wishList" ? "loved" : ""
@@ -34,7 +35,6 @@ function Product(props) {
           onClick={() => {
             console.log(!props.product.product, props);
             if (props.page !== "wishList") {
-              console.log("Ahahahahhhhah");
               dispatch(addToWishList(props.product._id));
             }
           }}

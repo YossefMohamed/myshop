@@ -5,50 +5,58 @@ import {
   ListGroup,
   Image,
   ListGroupItem,
-  Card,
-  Button,
   Form,
 } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import Rating from "./../rating/rating";
 import { listProductDetails } from "./../actions/productAction";
-import { connect } from "react-redux";
+import { connect, useSelector } from "react-redux";
 import Loader from "react-loader-spinner";
 import Massage from "../message/message";
+import Review from "./review";
 function ProductScreen(props) {
-  const [qty = 1, setQtu] = useState();
+  const [qty, setQtu] = useState(1);
   useEffect(() => {
     props.dispatch(listProductDetails(props.match.params.id));
     console.log(props);
+
+    return () => {};
   }, []);
 
-  const addToCartHandler = () => {
-    props.history.push(`/cart/${props.match.params.id}?qty=${qty}`);
-  };
   const { loading, product, error } = props.product;
+
+  const addToCartHandler = () => {
+    console.log(product.countInStock);
+    if (product.countInStock !== 0) {
+      props.history.push(`/cart/${props.match.params.id}?qty=${qty}`);
+    }
+  };
+  const userLogin = useSelector((state) => state.userLogin.userInfo);
+  const user = userLogin;
 
   return (
     <>
+      {console.table(props.product)}
       {loading ? (
         <div className="loader">
           <Loader type="Circles" color="black" height={100} width={100} />
         </div>
-      ) : props.product.error ? (
+      ) : error ? (
         <Massage variant="danger">{error}</Massage>
       ) : (
         <>
-          <Link className=" btn btn-dark mb-4" to="/">
+          <Link className="btn btn-my-shop mb-4" to="/">
             Go Back
           </Link>
-          <Row className="mb-4">
-            <Col lg={6}>
+          <Row className="my-5">
+            <Col lg={4}>
               <Image src={product.image} alt={product.name} fluid />
             </Col>
 
-            <Col lg={3} className="my-1">
+            <Col lg={5} className="my-auto">
               <ListGroup variant="flush">
                 <ListGroup.Item>
-                  <h3>{product.name}</h3>
+                  <h4>{product.name}</h4>
                 </ListGroup.Item>
                 <ListGroupItem>
                   <Rating
@@ -56,74 +64,49 @@ function ProductScreen(props) {
                     number={`${product.numberReviews} reviews`}
                   />
                 </ListGroupItem>
-                <ListGroupItem>Price : ${product.price}</ListGroupItem>
+                <ListGroupItem>Price : {product.price} $</ListGroupItem>
                 <ListGroupItem>
                   Description : {product.description}
                 </ListGroupItem>
               </ListGroup>
             </Col>
 
-            <Col lg={3} className="align-middle">
-              <Card>
-                <ListGroup variant="flush">
-                  <ListGroupItem>
-                    <Row>
-                      <Col>Price : </Col>
-                      <Col>
-                        <strong>${product.price}</strong>
-                      </Col>
-                    </Row>
-                  </ListGroupItem>
-                </ListGroup>
-                <ListGroup variant="flush">
-                  <ListGroupItem>
-                    <Row>
-                      <Col>Status : </Col>
-                      <Col>
-                        <strong>
-                          {product.countInStock > 0
-                            ? "In Stock"
-                            : "Out Of Stock"}
-                        </strong>
-                      </Col>
-                    </Row>
-                  </ListGroupItem>
-                  {product.countInStock > 0 && (
-                    <ListGroupItem>
-                      <Row>
-                        <Col className="d-flex align-items-center">Qty:</Col>
-                        <Col>
-                          <Form.Control
-                            as="select"
-                            onChange={(e) => setQtu(e.target.value)}
-                            size="sm"
-                          >
-                            {[...Array(product.countInStock).keys()].map(
-                              (x) => (
-                                <option key={x + 1} value={x + 1}>
-                                  {x + 1}
-                                </option>
-                              )
-                            )}
-                          </Form.Control>
-                        </Col>
-                      </Row>
-                    </ListGroupItem>
-                  )}
-                  <ListGroupItem>
-                    <Button
-                      className="btn-block"
-                      onClick={addToCartHandler}
-                      type="button"
-                      disabled={product.countInStock === 0}
+            <div className="col-md-3 col-12 p-3 my-auto">
+              <div className="card card-body">
+                <p className="mb-1">Price</p>
+                <h3 className="m-0 txt-right">{product.price} $</h3>
+                <hr className="my-4" />
+                <Row>
+                  <Col className="d-flex align-items-center">Quantity:</Col>
+                  <Col>
+                    <Form.Control
+                      as="select"
+                      onChange={(e) => setQtu(e.target.value)}
+                      size="sm"
                     >
-                      ADD TO CART
-                    </Button>
-                  </ListGroupItem>
-                </ListGroup>
-              </Card>
-            </Col>
+                      {[...Array(product.countInStock).keys()].map((x) => (
+                        <option key={x + 1} value={x + 1}>
+                          {x + 1}
+                        </option>
+                      ))}
+                    </Form.Control>
+                  </Col>
+                </Row>
+                <hr className="my-4" />
+                <div className="text-center">
+                  <button
+                    type="button"
+                    className={`btn btn-my-shop mb-2 `}
+                    onClick={addToCartHandler}
+                  >
+                    Add TO The Cart
+                  </button>
+                </div>
+              </div>
+            </div>
           </Row>
+          <Review user={user} product={product} location={props.location} />
+          {console.log(props)}
         </>
       )}
     </>

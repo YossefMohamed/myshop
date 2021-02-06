@@ -6,7 +6,6 @@ function Message(props) {
   const [hide, setHide] = React.useState(false);
   React.useEffect(() => {
     setTimeout(() => {
-      console.log(props.children);
       if (
         props.children === "Please Fill All the Fields !!" ||
         props.children === "Password And Password Confirmation is Not Equal !"

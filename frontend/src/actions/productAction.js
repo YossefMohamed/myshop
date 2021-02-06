@@ -26,7 +26,35 @@ export const listProductDetails = (id) => async (dispatch) => {
       method: "get",
       url: `http://localhost:5000/api/products/${id}`,
     });
+    if (!data.brand) throw new Error("Product Not Found !");
     dispatch({ type: "PRODUCT_DETAILS_SUCCESS", payload: data });
+  } catch (error) {
+    dispatch({
+      type: "PRODUCT_DETAILS_FAIL",
+      payload:
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message,
+    });
+  }
+};
+
+export const addReviewToProduct = (user, productId, userReview , rating) => async (
+  dispatch
+) => {
+  try {
+    dispatch({ type: "PRODUCT_DETAILS_REQUEST" });
+    const config = {
+      headers: {
+        authorization: `Bearer ${user.token}`,
+      },
+    };
+    const { data } = await axios.patch(
+      `http://localhost:5000/api/products/review/${productId}`,
+      { userReview: userReview ,},
+      config
+    );
+    dispatch(listProductDetails(productId));
   } catch (error) {
     dispatch({
       type: "PRODUCT_DETAILS_FAIL",

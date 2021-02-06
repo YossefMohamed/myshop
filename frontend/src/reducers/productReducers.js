@@ -21,7 +21,10 @@ export const productDetailsReducer = (
       return { loading: false, product: action.payload };
     case "PRODUCT_DETAILS_FAIL":
       return { loading: false, error: action.payload };
+    case "PRODUCT_DETAILS_RESET":
+      return { loading: false, product: {} };
     default:
       return state;
   }
 };
+

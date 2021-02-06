@@ -1,0 +1,24 @@
+.notfound__container {
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  text-align: center;
+  margin: 13rem 0;
+}
+
+.notfound__container a {
+  color: #f74046;
+  outline: none;
+  border: none;
+}
+
+.notfound__container .notfound--code {
+  border-right: 3px solid #e5e5e5;
+}
+
+.notfound__container .notfound--code h1 {
+  font-size: 5rem;
+}
+/*# sourceMappingURL=notFound.css.map */

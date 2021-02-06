@@ -1,15 +1,5 @@
 const mongoose = require("mongoose");
 
-const reviewSchema = mongoose.Schema(
-  {
-    name: { type: String, required: true },
-    rating: { type: Number, required: true },
-    comment: { type: String, required: true },
-  },
-  {
-    timestamp: true,
-  }
-);
 const productSchema = mongoose.Schema(
   {
     user: {
@@ -29,15 +19,16 @@ const productSchema = mongoose.Schema(
       type: String,
       required: true,
     },
-    category: [{
-      type: String,
-      required: true,
-    }],
+    category: [
+      {
+        type: String,
+        required: true,
+      },
+    ],
     description: {
       type: String,
       required: true,
     },
-    reviews: [reviewSchema],
     rating: {
       type: Number,
       required: true,
@@ -57,11 +48,38 @@ const productSchema = mongoose.Schema(
       required: true,
       default: 0,
     },
+    reviews: [
+      {
+        review: {
+          type: String,
+        },
+        rating: { type: Number, required: true },
+
+        user: {
+          type: mongoose.Schema.Types.ObjectId,
+          ref: "User",
+        },
+      },
+      {
+        timestamp: true,
+      },
+    ],
   },
   {
     timestamps: true,
   }
 );
 
+productSchema.pre("save", function (next) {
+  let x = 0;
+
+  this.reviews.map((e) => {
+    x += e.rating;
+  });
+  this.rating = x;
+  console.log(x);
+
+  next();
+});
 const Product = mongoose.model("Product", productSchema);
 module.exports = Product;

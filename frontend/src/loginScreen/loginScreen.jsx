@@ -73,7 +73,7 @@ export default function LoginScreen(props) {
         ""
       )}
       {userLogin.userInfo ? (
-        <Message variant="success">{userLogin.error}</Message>
+        <Message variant="success">{"Login Done !"}</Message>
       ) : (
         ""
       )}

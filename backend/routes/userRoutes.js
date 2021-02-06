@@ -5,6 +5,9 @@ const {
   login,
   getUserProfile,
   registerUser,
+  uploadUserPhoto,
+  resizeUserPhoto,
+  updateMe,
 } = require("./../controllers/userController");
 
 // /api/users
@@ -12,7 +15,9 @@ const {
 router.post("/login", login);
 
 router.get("/profile", protect, getUserProfile);
+router.get("/me", protect, getUserProfile);
+router.patch("/update", protect, updateMe);
 
-router.post("/", registerUser);
+router.post("/", uploadUserPhoto, resizeUserPhoto, registerUser);
 
 module.exports = router;

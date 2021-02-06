@@ -94,15 +94,15 @@ label {
   border: 0;
   height: 50px;
   width: 100%;
-  background: black;
+  background: #f74046;
   color: white;
-  border: 1px black solid;
+  border: 1px #f74046 solid;
   margin: 0.5rem 0;
 }
 
 .login__form--submit:hover {
   background-color: white;
-  color: black;
+  color: #f74046;
 }
 
 .register .register__form--submit {
@@ -110,15 +110,15 @@ label {
   border: 0;
   height: 50px;
   width: 100%;
-  background: black;
+  background: #f74046;
   color: white;
-  border: 1px black solid;
+  border: 1px #f74046 solid;
   margin: 2rem 0;
 }
 
 .register .register__form--submit:hover {
   background-color: white;
-  color: black;
+  color: #f74046;
 }
 
 .error {

@@ -8,7 +8,7 @@ const User = require("./models/userModel");
 const Product = require("./models/productModel");
 const Order = require("./models/userModel");
 connectDb();
-console.log(products)
+console.log(products);
 const importData = async () => {
   try {
     await Order.deleteMany();

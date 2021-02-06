@@ -1,0 +1,32 @@
+.option {
+  .info--menu {
+    border: 1px solid #e5e5e5;
+    position: absolute;
+    z-index: 9991;
+    right: 50%;
+    width: 6rem;
+    transform: translateX(50%);
+    top: calc(100% + 1.25rem);
+    background-color: white;
+    span {
+      border: 1px solid #e5e5e5;
+      display: block;
+      text-align: center;
+      font-size: 1.2rem;
+      a {
+        padding: 1.2rem;
+        text-align: center;
+        display: block;
+        width: 100%;
+        text-decoration: none;
+        height: 100%;
+      }
+    }
+  }
+}
+
+.btn-my-shop {
+  color: white;
+  opacity: 1;
+  background-color: #f74046;
+}

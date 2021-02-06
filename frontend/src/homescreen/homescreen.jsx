@@ -10,6 +10,7 @@ import Massage from "../message/message.jsx";
 // import "swiper/swiper.scss";
 
 import "./homescreen.css";
+import Slideshow from "../slideshow/slideshow.jsx";
 
 const HomeScreen = (props) => {
   useEffect(() => {
@@ -19,11 +20,14 @@ const HomeScreen = (props) => {
   let sliderProducts = [];
   let counter = 0;
   const [x, setX] = useState(0);
-  products.map((e) => {
-    if (!(counter === 5)) {
-      sliderProducts.push(e);
-    }
-  });
+  if (products) {
+    products.map((e) => {
+      if (!(counter === 5)) {
+        sliderProducts.push(e);
+      }
+    });
+  }
+  console.log(products);
 
   return (
     <div className="homescreen__main">
@@ -35,44 +39,18 @@ const HomeScreen = (props) => {
         <Massage variant="danger">{error}</Massage>
       ) : (
         <>
-          <div className="carousel">
-            <button
-              className="carousel__button carousel--right"
-              onClick={() => {
-                if (x === 500) {
-                  setX(0);
-                } else {
-                  setX(x + 100);
-                }
-              }}
-            >
-              {">"}
-            </button>
-            <button
-              className="carousel__button carousel--left"
-              onClick={() => {
-                if (x === 0) {
-                  setX(500);
-                } else {
-                  setX(x - 100);
-                }
-              }}
-            >
-              {"<"}
-            </button>
-            {sliderProducts.map((e, indx) => (
-              <div
-                key={e.product}
-                className="carousel__container--image"
-                style={{ transform: `translateX(-${x}%)` }}
-              >
-                <img src={e.image} className="carousel--image" />
-              </div>
-            ))}
-          </div>
+          {/* <Row>
+            <Col md={7}>
+              <Slideshow products={products} height={"25rem"} />
+            </Col>
+            <Col md={5} className="silderSection p-0">
+              <Slideshow products={products} height={"12rem"} />
+              <Slideshow products={products} height={"12rem"} />
+            </Col>
+          </Row> */}
           <Row>
             {products.map((e, index) => (
-              <Col sm={12} md={6} lg={6} xl={4} key={index}>
+              <Col sm={12} md={6} lg={4} xl={3} key={index}>
                 <Product product={e} page="home" />
               </Col>
             ))}

@@ -4,7 +4,11 @@ import {
   productListReducers,
   productDetailsReducer,
 } from "./reducers/productReducers";
-import { userLoginReducer, userRegisterReducer } from "./reducers/userReducers";
+import {
+  userLoginReducer,
+  userRegisterReducer,
+  messageUpdate,
+} from "./reducers/userReducers";
 import cartReducers from "./reducers/cartReducers";
 import wishListReducers from "./reducers/wishListReducers";
 const devTools = require("redux-devtools-extension");
@@ -23,6 +27,7 @@ const initialState = {
     cartItems: cartItemsFromStorage,
   },
   userLogin: { userInfo: userInfoFromStorage },
+  messageUpdate: { message: "", error: false },
 };
 
 const reducer = combineReducers({
@@ -32,6 +37,7 @@ const reducer = combineReducers({
   userLogin: userLoginReducer,
   userRegister: userRegisterReducer,
   wishList: wishListReducers,
+  messageUpdate,
 });
 
 const store = createStore(

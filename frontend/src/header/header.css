@@ -107,7 +107,6 @@
   font-size: 1.25rem;
   transform: translate(-50%, -50%);
 }
-
 .nav__main--options {
   display: flex;
   width: 25%;
@@ -120,6 +119,21 @@
   position: relative;
 }
 
+.option--love {
+  cursor: pointer;
+}
+
+.search--option {
+  cursor: pointer;
+}
+.user__login--icon {
+  cursor: pointer;
+  text-align: center;
+  background-color: #e5e5e5;
+  min-width: 2.5rem;
+  border-radius: 50%;
+}
+
 nav {
   position: sticky;
   top: 0;
@@ -128,7 +142,6 @@ nav {
   z-index: 9999999;
   box-shadow: 0 0.25px 8px rgba(109, 111, 113, 0.3);
 }
-
 .nav__main--search {
   display: none;
 }
@@ -152,4 +165,6 @@ a {
 .no-cart-items {
   cursor: pointer;
   text-anchor: unset;
+  width: 100%;
+  text-align: center;
 }

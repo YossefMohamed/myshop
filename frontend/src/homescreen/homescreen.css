@@ -3,9 +3,11 @@
 }
 .card--title {
   border-bottom: 1px solid #e5e5e5;
-  min-height: 5rem;
+  min-height: 7.5rem;
+  padding-top: 2rem !important;
   display: flex;
-  align-items: center;
+  /* align-items: center; */
+  font-weight: bolder;
 }
 
 .card--body {
@@ -56,7 +58,7 @@ button {
   opacity: 0.33;
 }
 .btn--enable {
-  color: black;
+  color: #ee242b;
   cursor: pointer;
 }
 
@@ -65,7 +67,7 @@ button {
 }
 
 .card-img-top {
-  height: 25rem !important;
+  height: 20rem !important;
 }
 .no-cart-items {
   position: absolute;
@@ -80,16 +82,14 @@ button {
 
 .carousel {
   width: 100%;
-  height: 30rem;
   display: flex;
-  flex-grow: 1;
   position: relative;
   overflow: hidden;
 }
 
 .carousel__container--image {
   min-width: 100%;
-  transition: 400ms all ease-in-out;
+  transition: 500ms all ease-in-out;
 
   z-index: -5;
 }
@@ -100,17 +100,29 @@ button {
 .carousel__button {
   position: absolute;
   background: transparent;
-  width: 20%;
+  width: 10%;
   height: 100%;
   border: 0;
   outline: 0;
+  opacity: 0.3;
   font-size: 3rem;
 }
 .carousel--left {
-  background-image: linear-gradient(to right, rgb(174, 169, 169), transparent);
+  /* background-image: linear-gradient(to right, rgb(174, 169, 169), transparent); */
   left: 0;
 }
 .carousel--right {
-  background-image: linear-gradient(to left, rgb(174, 169, 169), transparent);
+  /* background-image: linear-gradient(to left, rgb(174, 169, 169), transparent); */
   right: 0;
+}
+
+.silderSection {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-width: 25rem;
+}
+
+.silderSection:first-child {
+  margin-bottom: 3rem;
 }
