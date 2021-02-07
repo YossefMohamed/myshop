@@ -1,9 +1,12 @@
 export default (state = { wishListItems: [] }, { type, payload }) => {
   switch (type) {
     case "WISH_ADD_ITEM":
-      const existItem = state.wishListItems.find(
-        (x) => x.product === payload.product
-      );
+      console.log(type, payload);
+
+      const existItem = state.wishListItems.find((x) => {
+        console.log(x, payload);
+        return x._id === payload._id;
+      });
       if (existItem) {
         return {
           ...state,

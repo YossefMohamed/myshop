@@ -5,7 +5,15 @@ export const addToWishList = (id) => async (dispatch, getState) => {
     const { data } = await axios.get(
       `http://localhost:5000/api/products/${id}`
     );
-
+    console.log({
+      _id: data._id,
+      name: data.name,
+      image: data.image,
+      price: data.price,
+      countInStock: data.countInStock,
+      rating: data.rating,
+      numberReviews: data.numberReviews,
+    });
     dispatch({
       type: "WISH_ADD_ITEM",
       payload: {

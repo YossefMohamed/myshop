@@ -1,0 +1,116 @@
+.shipping__container .card {
+  z-index: 0;
+  background-color: #eceff1;
+  padding-bottom: 20px;
+  margin-top: 90px;
+  margin-bottom: 90px;
+  border-radius: 10px;
+}
+
+.shipping__container .top {
+  padding-top: 40px;
+  padding-left: 13% !important;
+  padding-right: 13% !important;
+}
+
+.shipping__container #progressbar {
+  margin-bottom: 30px;
+  overflow: hidden;
+  color: #455a64;
+  padding-left: 0px;
+  margin-top: 30px;
+}
+
+.shipping__container #progressbar li {
+  list-style-type: none;
+  font-size: 13px;
+  width: 25%;
+  float: left;
+  position: relative;
+  font-weight: 400;
+}
+
+.shipping__container #progressbar .step0:before {
+  font-family: FontAwesome;
+  content: "\f10c";
+  color: #fff;
+}
+
+.shipping__container #progressbar li:before {
+  width: 40px;
+  height: 40px;
+  line-height: 45px;
+  display: block;
+  font-size: 20px;
+  background: #c5cae9;
+  border-radius: 50%;
+  margin: auto;
+  padding: 0px;
+}
+
+.shipping__container #progressbar li:after {
+  content: "";
+  width: 100%;
+  height: 12px;
+  background: #c5cae9;
+  position: absolute;
+  left: 0;
+  top: 16px;
+  z-index: -1;
+}
+
+.shipping__container #progressbar li:last-child:after {
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+  position: absolute;
+  left: -50%;
+}
+
+.shipping__container #progressbar li:nth-child(2):after,
+.shipping__container #progressbar li:nth-child(3):after {
+  left: -50%;
+}
+
+.shipping__container #progressbar li:first-child:after {
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+  position: absolute;
+  left: 50%;
+}
+
+.shipping__container #progressbar li:last-child:after {
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
+.shipping__container #progressbar li:first-child:after {
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+}
+
+.shipping__container #progressbar li.active:before,
+.shipping__container #progressbar li.active:after {
+  background: #f74046;
+}
+
+.shipping__container #progressbar li.active:before {
+  font-family: FontAwesome;
+  content: "\f00c";
+}
+
+.shipping__container .icon {
+  width: 60px;
+  height: 60px;
+  margin-right: 15px;
+}
+
+.shipping__container .icon-content {
+  padding-bottom: 20px;
+}
+
+@media screen and (max-width: 992px) {
+  .shipping__container .icon-content {
+    width: 50%;
+  }
+}
+/*# sourceMappingURL=shipping.css.map */

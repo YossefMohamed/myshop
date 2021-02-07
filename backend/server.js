@@ -4,6 +4,7 @@ const cors = require("cors");
 const dotenv = require("dotenv");
 const productRoutes = require("./routes/productRoutes");
 const userRoutes = require("./routes/userRoutes");
+const orderRoutes = require("./routes/orderRoutes");
 const connectDB = require("./database");
 const morgan = require("morgan");
 dotenv.config();
@@ -16,6 +17,7 @@ app.use("/static", express.static(path.join(__dirname, "public")));
 app.use(express.json());
 app.use(cors());
 app.use("/api/products", productRoutes);
+app.use("/api/order", orderRoutes);
 app.use("/api/users", userRoutes);
 
 const port = process.env.PORT || 5000;

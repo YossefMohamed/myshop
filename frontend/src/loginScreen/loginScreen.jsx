@@ -29,7 +29,11 @@ export default function LoginScreen(props) {
     }
     console.log(true);
     if (userLogin.userInfo) {
-      props.history.push(redirect);
+      if (redirect) {
+        props.history.push(redirect);
+      } else {
+        props.history.push("/");
+      }
     }
   }, [userLogin, redirect]);
 

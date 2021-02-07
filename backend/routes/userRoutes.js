@@ -17,6 +17,7 @@ router.post("/login", login);
 router.get("/profile", protect, getUserProfile);
 router.get("/me", protect, getUserProfile);
 router.patch("/update", protect, updateMe);
+router.post("/image", protect, uploadUserPhoto, resizeUserPhoto);
 
 router.post("/", uploadUserPhoto, resizeUserPhoto, registerUser);
 

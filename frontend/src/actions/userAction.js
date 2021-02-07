@@ -81,7 +81,14 @@ export const update = (
   }
 };
 
-export const register = (email, password, name) => async (dispatch) => {
+export const register = (
+  email,
+  password,
+  name,
+  buildingNumber,
+  street,
+  city
+) => async (dispatch) => {
   try {
     dispatch({
       type: "USER_REGISTER_REQUEST",
@@ -95,7 +102,7 @@ export const register = (email, password, name) => async (dispatch) => {
 
     const { data } = await axios.post(
       "/api/users",
-      { name, email, password },
+      { name, email, password, buildingNumber, street, city },
       config
     );
 
@@ -127,4 +134,29 @@ export const logout = () => (dispatch) => {
   localStorage.removeItem("wishListItems");
   dispatch({ type: "USER_LOGOUT" });
   dispatch({ type: "UPDATE_RESET" });
+};
+
+export const addImage = (image) => async (dispatch, getState) => {
+  try {
+    const {
+      userLogin: { userInfo },
+    } = getState();
+
+    const config = {
+      headers: {
+        "Content-Type": "multipart/form-data",
+
+        authorization: `Bearer ${userInfo.token}`,
+      },
+    };
+    const { data } = await axios.post(`/api/users/image`, image, config);
+  } catch (error) {
+    dispatch({
+      type: "UPDATE_ERROR",
+      payload:
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message,
+    });
+  }
 };

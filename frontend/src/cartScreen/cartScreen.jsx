@@ -121,6 +121,7 @@ import { Row } from "react-bootstrap";
 // import { CartContext } from '../../contexts/CartContext';
 import { useDispatch, useSelector } from "react-redux";
 import { addToCart } from "../actions/cartAction";
+import { createOrder } from "../actions/orderAction";
 // import Message from "../message/message";
 import CartItem from "./cartItem";
 
@@ -130,6 +131,7 @@ const CartScreen = (props) => {
   const productId = props.match.params.id;
 
   const { cartItems } = useSelector((state) => state.cart);
+  const userInfo = useSelector((state) => state.userLogin.userInfo);
 
   const qty = props.location.search
     ? Number(props.location.search.split("=")[1])
@@ -143,6 +145,7 @@ const CartScreen = (props) => {
   console.log(cartItems.length === 0);
   return (
     <>
+      {console.log(cartItems)}
       {cartItems.length === 0 ? (
         <div className="col-md-3 col-12 p-3 m-auto">
           {<div className="p-3 text-center text-muted">Your cart is empty</div>}
@@ -179,13 +182,29 @@ const CartScreen = (props) => {
                 </h3>
                 <hr className="my-4" />
                 <div className="text-center">
-                  <button type="button" className="btn btn-primary mb-2">
+                  <button
+                    type="button"
+                    className="btn btn-primary mb-2"
+                    onClick={(e) =>
+                      props.history.push("/signin?redirect=shipping")
+                    }
+                    onClick={(e) => {
+                      dispatch(createOrder(cartItems));
+                      if (userInfo) {
+                        props.history.push("/me");
+                      } else {
+                        props.history.push("/register");
+                      }
+                    }}
+                  >
                     CHECKOUT
                   </button>
                   <button
                     type="button"
                     className="btn btn-outlineprimary btn-sm"
-                    onClick={dispatch({ type: "CART_RESET" })}
+                    onClick={(e) => {
+                      dispatch({ type: "CART_RESET" });
+                    }}
                   >
                     CLEAR
                   </button>

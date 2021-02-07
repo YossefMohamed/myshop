@@ -21,6 +21,7 @@ const HomeScreen = (props) => {
   let counter = 0;
   const [x, setX] = useState(0);
   if (products) {
+    console.log(products, "asdadasdadasdasdadass");
     products.map((e) => {
       if (!(counter === 5)) {
         sliderProducts.push(e);
@@ -60,7 +61,7 @@ const HomeScreen = (props) => {
     </div>
   );
 };
-const mapStateToProps = (state, props) => {
+const mapStateToProps = (state) => {
   return { productList: state.productList };
 };
 export default connect(mapStateToProps)(HomeScreen);

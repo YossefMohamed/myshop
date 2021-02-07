@@ -19,7 +19,7 @@ function Review({ user, product, location }) {
     setPlaceHolder("Add Your Review !!");
     setPostedBefore(false);
     product.reviews.map((e) => {
-      if (e.user._id === user.user._id) {
+      if (e._id === user._id) {
         setPostedBefore(true);
         setReviewText("");
         setPlaceHolder("You Have Posted Your Review Thanks :) ");
@@ -32,7 +32,7 @@ function Review({ user, product, location }) {
   const [reviewText, setReviewText] = React.useState("");
   return (
     <div>
-      {console.table({ postedBefore, placeHolder, reviewText, message })}
+      {/* {console.table({ postedBefore, placeHolder, reviewText, message })} */}
       {message.text && (
         <Message variant={`${message.error ? "danger" : "success"}`}>
           {message.text}
@@ -65,6 +65,12 @@ function Review({ user, product, location }) {
               onClick={(e) => {
                 if (reviewText.trim()) {
                   e.preventDefault();
+                  console.table({
+                    user: user.user,
+                    product: product._id,
+                    reviewText,
+                    rating,
+                  });
                   dispatch(
                     addReviewToProduct(
                       user.user,

@@ -7,6 +7,8 @@ exports.getProducts = handler(async (req, res) => {
     path: "reviews.user",
     select: "name img",
   });
+  console.log("NO");
+  console.log("NO");
   if (product) {
     res.json(product);
   } else {
@@ -21,11 +23,21 @@ exports.getProductById = handler(async (req, res) => {
 });
 
 exports.addReviewToProduct = handler(async (req, res) => {
-  // console.log(req.user);
+  // console.log("Yes");
   const product = await Product.findById(req.params.productId);
-  // console.log(product, "Asd");
+
   product.numberReviews++;
-  product.reviews.push({ user: req.user._id, review: req.body.userReview , rating:req.body.rating });
+  product.reviews.push({
+    user: req.user._id,
+    review: req.body.userReview,
+    rating: req.body.rating,
+  });
+  // console.log(product);
+  // console.log("Yes");
   const productEdited = await product.save();
-  res.json(productEdited);
+  // console.log("Yes");
+  console.table(productEdited);
+  res.status(200);
+  // console.log("Yes");
+  res.send("ok");
 });

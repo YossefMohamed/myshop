@@ -13,13 +13,14 @@ export default (state = { cartItems: [] }, { type, payload }) => {
         };
       }
       return { ...state, cartItems: [...state.cartItems, payload] };
+    case "CART_RESET":
+      return { ...state, cartItems: [] };
     case "CART_REMOVE_ITEM":
       return {
         ...state,
         cartItems: state.cartItems.filter((x) => x.product !== payload),
       };
-    case "CART_RESET":
-      return { ...state, cartItems: [] };
+
     default:
       return state;
   }

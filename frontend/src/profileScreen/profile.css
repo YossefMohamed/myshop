@@ -46,7 +46,7 @@
 
 .profile--container .profile-info {
   border: 1px solid #e5e5e5;
-  padding: 3rem;
+  padding: 1rem;
   width: 70%;
 }
 
@@ -79,5 +79,35 @@
   .profile__head--image img {
     margin: 0;
   }
+}
+
+.order--tracker .div-table {
+  display: table;
+  width: 100%;
+  overflow: scroll;
+  background-color: #eee;
+  border-spacing: 2px;
+  border-radius: 4px;
+}
+
+.order--tracker .trow {
+  display: table-row;
+}
+
+.order--tracker .tcolumn {
+  display: table-cell;
+  vertical-align: top;
+  background-color: #fff;
+  padding: 10px 8px;
+}
+
+.order--tracker .tcolumn1 {
+  width: 240px;
+}
+
+.order--tracker .tcolumn4,
+.order--tracker .tcolumn5,
+.order--tracker .tcolumn6 {
+  width: 80px;
 }
 /*# sourceMappingURL=profile.css.map */

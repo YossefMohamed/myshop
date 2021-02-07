@@ -39,9 +39,19 @@ export const listProductDetails = (id) => async (dispatch) => {
   }
 };
 
-export const addReviewToProduct = (user, productId, userReview , rating) => async (
-  dispatch
-) => {
+// (
+//   user.user,
+//   product._id,
+//   reviewText,
+//   rating
+// )
+
+export const addReviewToProduct = (
+  user,
+  productId,
+  userReview,
+  rating
+) => async (dispatch) => {
   try {
     dispatch({ type: "PRODUCT_DETAILS_REQUEST" });
     const config = {
@@ -51,7 +61,7 @@ export const addReviewToProduct = (user, productId, userReview , rating) => asyn
     };
     const { data } = await axios.patch(
       `http://localhost:5000/api/products/review/${productId}`,
-      { userReview: userReview ,},
+      { userReview: userReview, rating: rating },
       config
     );
     dispatch(listProductDetails(productId));

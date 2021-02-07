@@ -5,7 +5,7 @@ const signIn = require("../utils/signInJWT");
 
 const protect = handler(async (req, res, next) => {
   let token;
-  console.log(req.headers);
+  // console.log(req.headers);
   if (
     req.headers.authorization &&
     req.headers.authorization.startsWith("Bearer")
@@ -17,13 +17,13 @@ const protect = handler(async (req, res, next) => {
 
       console.log(decoded);
       const user = await User.findById(decoded.id).select(" -__v");
-      console.log(user, "KKKKKK");
+      // console.log(user, "KKKKKK");
       user._doc.token = signIn(user._id);
 
       req.user = user;
       next();
     } catch (error) {
-      console.log(error.message);
+      // console.log(error.message);
       res.status(401);
       throw new Error("Not Authorized !!!");
     }

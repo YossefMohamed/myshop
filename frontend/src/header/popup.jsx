@@ -45,7 +45,7 @@ class Popup extends Component {
                   <div className="item-details">
                     <span className="name">{item.name}</span>
                     <span className="price">
-                      {item.qty} x ${item.price}
+                      {item.qty} {item.qty ? "x" : ""} ${item.price}
                     </span>
                   </div>
                 </div>

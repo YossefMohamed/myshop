@@ -19,8 +19,6 @@ function ProductScreen(props) {
   useEffect(() => {
     props.dispatch(listProductDetails(props.match.params.id));
     console.log(props);
-
-    return () => {};
   }, []);
 
   const { loading, product, error } = props.product;
@@ -36,7 +34,7 @@ function ProductScreen(props) {
 
   return (
     <>
-      {console.table(props.product)}
+      {console.log(props.product, "Asdasdasdadawdawdawds")}
       {loading ? (
         <div className="loader">
           <Loader type="Circles" color="black" height={100} width={100} />
@@ -48,6 +46,9 @@ function ProductScreen(props) {
           <Link className="btn btn-my-shop mb-4" to="/">
             Go Back
           </Link>
+          {/* {product.category.map((e, index) => (
+            <h2 key={index}>{e}</h2>
+          ))} */}
           <Row className="my-5">
             <Col lg={4}>
               <Image src={product.image} alt={product.name} fluid />

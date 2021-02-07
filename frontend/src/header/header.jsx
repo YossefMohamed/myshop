@@ -49,9 +49,9 @@ const Header = () => {
     setOptions({ [other]: false, ["bag"]: !options["bag"] });
   };
   // console.log(noCartItems);
-  React.useEffect(() => {
-    // console.log(window.innerWidth);
-  }, [window.innerWidth]);
+  // React.useEffect(() => {
+  // console.log(window.innerWidth);
+  // }, [window.innerWidth]);
   return (
     <nav>
       {console.log(userLogin.userInfo)}
@@ -106,7 +106,7 @@ const Header = () => {
                     className="user__login--icon"
                     onClick={(e) => noneLogout()}
                   >
-                    {userLogin.userInfo.user.name.charAt(0).toUpperCase()}
+                    {userLogin.userInfo.name.charAt(0).toUpperCase()}
                   </div>
                   <Option display={profile} clickme={noneLogout} />
                 </div>

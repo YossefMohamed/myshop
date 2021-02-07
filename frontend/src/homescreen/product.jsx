@@ -26,14 +26,12 @@ function Product(props) {
 
   return (
     <div>
-      {console.log(props.product, "sdfsdf")}
       <Card className="my-3 rounded-top w-100 card__item ">
         <div
           className={`love--icon ${
             wishListed || props.page === "wishList" ? "loved" : ""
           }`}
           onClick={() => {
-            console.log(!props.product.product, props);
             if (props.page !== "wishList") {
               dispatch(addToWishList(props.product._id));
             }

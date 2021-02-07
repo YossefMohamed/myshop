@@ -14,6 +14,7 @@ import React from "react";
 import ScrollTop from "./utiles/scroll";
 import Profile from "./profileScreen/Profile";
 import NotFound from "./notFoundScreen/notFoundScreen";
+import ShippingScreen from "./shippingScreen/shippingScreen";
 function App(props) {
   React.useEffect(() => {
     console.log(props);
@@ -28,6 +29,7 @@ function App(props) {
           <Container>
             <Switch>
               <Route path="/" component={HomeScreen} exact />
+              <Route path="/order/:id" component={ShippingScreen} exact />
               <Route path="/product/:id" component={ProductScreen} exact />
               <Route path="/cart/:id?" component={CartScreen} exact />
               <Route path="/wishList" component={WishListScreen} exact />

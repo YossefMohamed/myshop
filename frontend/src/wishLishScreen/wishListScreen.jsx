@@ -4,11 +4,12 @@ import { useSelector } from "react-redux";
 import Message from "./../message/message";
 import Product from "./../homescreen/product";
 function WishListScreen(props) {
-  const wishListItems = useSelector((state) => state.wishList.wishListItems);
+  const wishListItems = useSelector((state) => {
+    console.log(state);
+    return state.wishList.wishListItems;
+  });
   return (
     <div>
-      {console.log(wishListItems)}
-
       <div className="homescreen__main">
         {wishListItems.length !== 0 ? (
           <Row>

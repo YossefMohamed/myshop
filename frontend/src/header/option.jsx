@@ -18,6 +18,8 @@ function Option(props) {
         <span
           onClick={(e) => {
             dispatch(logout());
+
+            dispatch({ type: "CART_RESET" });
             props.clickme();
           }}
         >
