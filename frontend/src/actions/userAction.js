@@ -2,7 +2,6 @@ import axios from "axios";
 
 export const login = (email, password) => async (dispatch) => {
   try {
-    console.log(email, password);
     dispatch({
       type: "USER_LOGIN_REQUEST",
     });
@@ -11,16 +10,14 @@ export const login = (email, password) => async (dispatch) => {
         "Content-Type": "application/json",
       },
     };
-    const { data } = await axios.post("http://localhost:5000/api/users/login", {
+    const { data } = await axios.post("/api/users/login", {
       email,
       password,
     });
-    console.log(data);
     dispatch({
       type: "USER_LOGIN_SUCCESS",
       payload: data,
     });
-    console.log(data);
     localStorage.setItem("userInfo", JSON.stringify(data));
   } catch (error) {
     dispatch({
@@ -33,7 +30,69 @@ export const login = (email, password) => async (dispatch) => {
   }
 };
 
-export const register = (email, password, name) => async (dispatch) => {
+export const update = (
+  user,
+  email,
+  name,
+  password,
+  confirmPassword,
+  oldPassword,
+  buildingNumber,
+  street,
+  city
+) => async (dispatch) => {
+  try {
+    dispatch({
+      type: "USER_LOGIN_REQUEST",
+    });
+    const config = {
+      headers: {
+        authorization: `Bearer ${user.token}`,
+      },
+    };
+
+    var { data } = await axios.patch(
+      "/api/users/update",
+      {
+        email: email,
+        name: name,
+        password,
+        confirmPassword,
+        oldPassword,
+        buildingNumber,
+        street,
+        city,
+      },
+      config
+    );
+    
+    dispatch({
+      type: "USER_LOGIN_SUCCESS",
+      payload: data,
+    });
+    dispatch({
+      type: "UPDATE_DONE",
+    });
+    localStorage.setItem("userInfo", JSON.stringify(data));
+  } catch (error) {
+    dispatch({
+      type: "UPDATE_ERROR",
+      payload:
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message,
+    });
+  }
+};
+
+export const register = (
+  email,
+  password,
+  name,
+  buildingNumber,
+  street,
+  city
+) => async (dispatch) => {
   try {
     dispatch({
       type: "USER_REGISTER_REQUEST",
@@ -47,7 +106,7 @@ export const register = (email, password, name) => async (dispatch) => {
 
     const { data } = await axios.post(
       "/api/users",
-      { name, email, password },
+      { name, email, password, buildingNumber, street, city },
       config
     );
 
@@ -65,6 +124,53 @@ export const register = (email, password, name) => async (dispatch) => {
   } catch (error) {
     dispatch({
       type: "USER_REGISTER_FAIL",
+      payload:
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message,
+    });
+  }
+};
+
+export const logout = () => (dispatch) => {
+  localStorage.removeItem("userInfo");
+  localStorage.removeItem("cartItems");
+  localStorage.removeItem("wishListItems");
+  dispatch({ type: "USER_LOGOUT" });
+  dispatch({ type: "UPDATE_RESET" });
+};
+
+export const addImage = (image) => async (dispatch, getState) => {
+  try {
+    const {
+      userLogin: { userInfo },
+    } = getState();
+    dispatch({
+      type: "USER_LOGIN_REQUEST",
+    });
+    const config = {
+      headers: {
+        "content-type": "multipart/form-data",
+        authorization: `Bearer ${userInfo.token}`,
+      },
+    };
+    const { data } = await axios.post(
+      `/api/users/image`,
+      image,
+      config
+    );
+    dispatch({
+      type: "USER_LOGIN_SUCCESS",
+      payload: data,
+    });
+    localStorage.setItem("userInfo", JSON.stringify(data));
+
+    dispatch({
+      type: "UPDATE_DONE",
+    });
+  } catch (error) {
+    dispatch({
+      type: "UPDATE_ERROR",
       payload:
         error.response && error.response.data.message
           ? error.response.data.message

@@ -1,16 +1,19 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
-import { Form, Button, Row, Col, Container } from "react-bootstrap";
+// import { Link } from "react-router-dom";
+import { Container } from "react-bootstrap";
 import Message from "./../message/message";
 import Loader from "react-loader-spinner";
-import FacebookLogin from "react-facebook-login";
+// import FacebookLogin from "react-facebook-login";
 import { useDispatch, useSelector } from "react-redux";
-import { login, register } from "../actions/userAction";
+import { register } from "../actions/userAction";
 
 function Register(props) {
   const [registerEmail, setRegisterEmail] = useState();
   const [registerPassword, setRegisterPassword] = useState();
   const [registerName, setRegisterName] = useState();
+  const [city, setCity] = useState();
+  const [street, setStreet] = useState();
+  const [buildingNumber, setBuildingNumber] = useState();
   const [confirmPassword, setConfirmPassword] = useState();
   const [message, setMessage] = useState([]);
   const dispatch = useDispatch();
@@ -22,14 +25,32 @@ function Register(props) {
 
   const onSubimitRegisterHandler = (e) => {
     e.preventDefault();
+    // console.log(buildingNumber || city || street);
     setMessage([]);
     try {
-      if (!registerEmail || !registerPassword || !registerName)
+      if (
+        !registerEmail ||
+        !registerPassword ||
+        !registerName ||
+        !buildingNumber ||
+        !city ||
+        !street
+      )
         throw new Error("Please Fill All the Fields !!");
       if (registerPassword !== confirmPassword) {
         throw new Error("Password And Password Confirmation is Not Equal !");
       }
-      dispatch(register(registerEmail, registerPassword, registerName));
+
+      dispatch(
+        register(
+          registerEmail,
+          registerPassword,
+          registerName,
+          buildingNumber,
+          street,
+          city
+        )
+      );
     } catch (error) {
       if (!message.includes(error.message))
         setMessage([...message, error.message]);
@@ -95,6 +116,42 @@ function Register(props) {
                   setRegisterName(e.target.value);
                 }}
               />
+              <label htmlFor="name">
+                Building Number : <span className="required">*</span>
+              </label>
+              <input
+                type="text"
+                name="building"
+                id="register__Name"
+                className="form__input"
+                onChange={(e) => {
+                  setBuildingNumber(e.target.value);
+                }}
+              />
+              <label htmlFor="name">
+                Street : <span className="required">*</span>
+              </label>
+              <input
+                type="text"
+                name="street"
+                id="register__Name"
+                className="form__input"
+                onChange={(e) => {
+                  setStreet(e.target.value);
+                }}
+              />
+              <label htmlFor="name">
+                City : <span className="required">*</span>
+              </label>
+              <input
+                type="text"
+                name="city"
+                id="register__Name"
+                className="form__input"
+                onChange={(e) => {
+                  setCity(e.target.value);
+                }}
+              />
               <label htmlFor="password">
                 Password : <span className="required">*</span>
               </label>
@@ -111,7 +168,7 @@ function Register(props) {
                 passwordConfirm : <span className="required">*</span>
               </label>
               <input
-                type="text"
+                type="password"
                 name="passwordConfirm"
                 className={`form__input`}
                 id="passwordConfirm"
@@ -119,13 +176,9 @@ function Register(props) {
                   setConfirmPassword(e.target.value);
                 }}
               />
-              <Form.File
-                id="exampleFormControlFile1"
-                label="Upload your image"
-              />
 
               <button
-                className="register__form--submit"
+                className="register__form--submit "
                 onClick={onSubimitRegisterHandler}
               >
                 Register

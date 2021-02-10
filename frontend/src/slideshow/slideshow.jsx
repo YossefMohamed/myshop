@@ -2,15 +2,25 @@ import React, { useState, useEffect } from "react";
 
 const SlideShow = ({ products, height }) => {
   let sliderProducts = [];
-  let counter = 1;
+
   const [x, setX] = useState(0);
   products.map((e, index) => {
     if (index + 1 < 6) {
       sliderProducts.push(`/images/slideShow${index + 1}.png`);
-      counter++;
     }
+    return 1;
   });
-  console.log(sliderProducts);
+  useEffect(() => {
+    const interval = setInterval(() => {
+      if (x === 400) {
+        setX(0);
+      } else {
+        setX(x + 100);
+      }
+    }, 4000);
+    return () => clearInterval(interval);
+  }, [x]);
+  // console.log(sliderProducts);
   return (
     <div className="carousel" style={{ height: height }}>
       <button
@@ -43,8 +53,8 @@ const SlideShow = ({ products, height }) => {
           className="carousel__container--image"
           style={{ transform: `translateX(-${x}%)` }}
         >
-          {console.log(indx)}
-          <img src={e} className="carousel--image" />
+          {/* {console.log(indx)} */}
+          <img src={e} className="carousel--image" alt="carousel" />
         </div>
       ))}
     </div>

@@ -11,22 +11,24 @@ class Popup extends Component {
 
   componentDidMount() {
     let clicked = 0;
-    console.log(this.props);
-    document.addEventListener("click", (event) => {
-      if (
-        !this.popUpRef.current.contains(event.target) &&
-        this.props.display.display &&
-        !(event.target.className === this.props.className)
-      ) {
-        this.props.clickMe();
-      }
-    });
+    // console.log(this.props);
+    // document.addEventListener("click", (event) => {
+    //   if (
+    //     !this.popUpRef.current.contains(event.target) &&
+    //     this.props.display.display &&
+    //     !(event.target.className === this.props.className)
+    //   ) {
+    //     this.props.clickMe();
+    //   }
+    // });
   }
 
   render() {
-    const display = this.props.display.display === true ? "block" : "none";
+    const display = this.props.display.display === true ? "" : "none";
     return (
       <div className="popup__container" ref={this.popUpRef}>
+        {/* {console.log(this.props.cartItems)} */}
+
         <div className="popup" style={{ display }}>
           <div
             className="media__close--icon"
@@ -36,14 +38,14 @@ class Popup extends Component {
           </div>
 
           <div className="cartItems__popup">
-            {this.props.cartItems || !this.props.cartItems.length === 0 ? (
+            {this.props.cartItems.length !== 0 ? (
               this.props.cartItems.map((item, indx) => (
                 <div className="cart-item" key={indx}>
                   <img src={item.image} alt={item.name} />
                   <div className="item-details">
                     <span className="name">{item.name}</span>
                     <span className="price">
-                      {item.qty} x ${item.price}
+                      {item.qty} {item.qty ? "x" : ""} ${item.price}
                     </span>
                   </div>
                 </div>
@@ -54,12 +56,8 @@ class Popup extends Component {
               </div>
             )}
           </div>
-          <button>
-            <Link
-              to={`/${this.props.linkTo}`}
-              className="button-container"
-              onClick={this.props.clickMe}
-            >
+          <button onClick={this.props.clickMe}>
+            <Link to={`/${this.props.linkTo}`} className="button-container">
               {this.props.type}
             </Link>
           </button>

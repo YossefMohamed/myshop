@@ -9,16 +9,40 @@ const userSchema = mongoose.Schema(
     email: {
       type: String,
       unique: true,
-      required: true,
+      lowercase: true,
+      trim: true,
+      required: [true, "Please Enter Your Email !"],
     },
     password: {
       type: String,
       required: true,
+      minlength: [8, "Password Must Be More Than 8 Chars !"],
+    },
+    shippingAddress: {
+      buildingNumber: {
+        type: String,
+        required: true,
+        trim: true,
+      },
+      street: {
+        type: String,
+        required: true,
+        trim: true,
+      },
+      city: {
+        type: String,
+        required: true,
+        trim: true,
+      },
     },
     isAdmin: {
       type: Boolean,
       required: true,
       default: false,
+    },
+    img: {
+      type: String,
+      default: "static/img/default.jpg",
     },
   },
   {

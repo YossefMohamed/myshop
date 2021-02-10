@@ -23,13 +23,17 @@ export default function LoginScreen(props) {
     : "/";
   const dispatch = useDispatch();
   useEffect(() => {
-    console.log(props.history, "Check");
+    // console.log(props.history, "Check");
     if (userLogin.loading) {
       if (userLogin.error) setMessage([...message, userLogin.message]);
     }
-    console.log(true);
+    // console.log(true);
     if (userLogin.userInfo) {
-      props.history.push(redirect);
+      if (redirect) {
+        props.history.push(redirect);
+      } else {
+        props.history.push("/");
+      }
     }
   }, [userLogin, redirect]);
 
@@ -41,13 +45,13 @@ export default function LoginScreen(props) {
     myRef.current.children[0].getElementsByTagName("button")[0].click();
   };
   const responesFacebook = (response) => {
-    console.table(response);
+    // console.table(response);
     dispatch(register(response.email, response.id, response.name));
   };
 
   const onSubimitHandler = (e) => {
     e.preventDefault();
-    console.log(userLogin);
+    // console.log(userLogin);
 
     try {
       if (!loginEmail || !loginPassword)
@@ -55,7 +59,7 @@ export default function LoginScreen(props) {
       dispatch(login(loginEmail, loginPassword));
     } catch (error) {
       setMessage([...message, error.message]);
-      console.log(error.message);
+      // console.log(error.message);
     }
   };
   return (
@@ -73,7 +77,7 @@ export default function LoginScreen(props) {
         ""
       )}
       {userLogin.userInfo ? (
-        <Message variant="success">{userLogin.error}</Message>
+        <Message variant="success">{"Login Done !"}</Message>
       ) : (
         ""
       )}
@@ -117,9 +121,9 @@ export default function LoginScreen(props) {
                 }}
                 id="password"
               />
-              <div className="form__password--reset">
+              {/* <div className="form__password--reset">
                 <Link to="/reset">Forget Your Password ?</Link>
-              </div>
+              </div> */}
               <button
                 className="login__form--submit"
                 onClick={onSubimitHandler}
@@ -138,7 +142,9 @@ export default function LoginScreen(props) {
                 <div className="hr"></div>
               </div>
               <button className="login__form--submit">
-                <Link to="/register">Register</Link>
+                <Link to="/register" className="link--register">
+                  Register
+                </Link>
               </button>
             </div>
           </div>

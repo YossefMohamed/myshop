@@ -116,74 +116,106 @@
 
 // export default CartScreen;
 
-
-
-import React, { useContext } from 'react';
-import { Row } from 'react-bootstrap';
+import React from "react";
+import { Row } from "react-bootstrap";
 // import { CartContext } from '../../contexts/CartContext';
 import { useDispatch, useSelector } from "react-redux";
-import Message from "../message/message";
-import CartItem from './cartItem';
+import { addToCart } from "../actions/cartAction";
+import { createOrder } from "../actions/orderAction";
+// import Message from "../message/message";
+import CartItem from "./cartItem";
 
 // import CartItem from './CartItem';
 
-const CartScreen = () => {
+const CartScreen = (props) => {
+  const productId = props.match.params.id;
 
-    const { cartItems } = useSelector((state) => state.cart);
+  const { cartItems } = useSelector((state) => state.cart);
+  const userInfo = useSelector((state) => state.userLogin.userInfo);
 
-  console.log(cartItems.length===0)
-    return ( <>
-        {(cartItems.length===0)?<div className="col-md-3 col-12 p-3 m-auto">
-                        {
-                            <div className="p-3 text-center text-muted">
-                                Your cart is empty
-                            </div>
-                        }
+  const qty = props.location.search
+    ? Number(props.location.search.split("=")[1])
+    : 1;
+  const dispatch = useDispatch();
+  React.useEffect(() => {
+    if (productId) {
+      dispatch(addToCart(productId, qty));
+    }
+  }, [dispatch, productId, qty]);
+  // console.log(cartItems.length === 0);
+  return (
+    <>
+      {/* {console.log(cartItems)} */}
+      {cartItems.length === 0 ? (
+        <div className="col-md-3 col-12 p-3 m-auto">
+          {<div className="p-3 text-center text-muted">Your cart is empty</div>}
 
-                    
-                            <div className="p-3 text-center text-success">
-                                <p>Checkout successfull</p>
-                                <a href="/" className="btn btn-outline-success btn-sm">BUY MORE</a>
-                            </div>
-               
-                    </div>:
-  <div >
-        <Row noGutters>
-        <div className="card card-body border-0 col-md-8 col-12">
+          <div className="p-3 text-center text-success">
+            <p>Checkout successfull</p>
+            <a href="/" className="btn btn-outline-success btn-sm">
+              BUY MORE
+            </a>
+          </div>
+        </div>
+      ) : (
+        <div>
+          <Row noGutters>
+            <div className="card card-body border-0 col-md-8 col-12">
+              {cartItems.map((product) => (
+                <CartItem key={product.product} product={product} />
+              ))}
+            </div>
 
-{
-    cartItems.map(product =>  <CartItem key={product.product} product={product}/>)
-}
+            <div className="col-md-4 col-12 p-3">
+              <div className="card card-body">
+                <p className="mb-1">Total Items</p>
+                <h4 className=" mb-3 txt-right">
+                  {cartItems.reduce((acc, cur) => acc + cur.qty, 0)}
+                  {` items`}
+                </h4>
+                <p className="mb-1">Total Payment</p>
+                <h3 className="m-0 txt-right">
+                  {cartItems
+                    .reduce((acc, item) => acc + item.qty * item.price, 0)
+                    .toFixed(2)}{" "}
+                  $
+                </h3>
+                <hr className="my-4" />
+                <div className="text-center">
+                  <button
+                    type="button"
+                    className="btn btn-primary mb-2"
+                    onClick={(e) =>
+                      props.history.push("/signin?redirect=shipping")
+                    }
+                    onClick={(e) => {
+                      dispatch(createOrder(cartItems));
+                      if (userInfo) {
+                        props.history.push("/me");
+                      } else {
+                        props.history.push("/register");
+                      }
+                    }}
+                  >
+                    CHECKOUT
+                  </button>
+                  <button
+                    type="button"
+                    className="btn btn-outlineprimary btn-sm"
+                    onClick={(e) => {
+                      dispatch({ type: "CART_RESET" });
+                    }}
+                  >
+                    CLEAR
+                  </button>
+                </div>
+              </div>
+            </div>
+          </Row>
+        </div>
+      )}
+    </>
+  );
+};
 
-</div>
-
-
-                    <div className="col-md-4 col-12 p-3">
-                            <div className="card card-body">
-                                <p className="mb-1">Total Items</p>
-                                <h4 className=" mb-3 txt-right">
-              {cartItems.reduce((acc, cur) => acc + cur.qty, 0)} 
-              {` items`}</h4>
-                                <p className="mb-1">Total Payment</p>
-                                <h3 className="m-0 txt-right">{ cartItems.reduce((acc, item) => acc + item.qty * item.price, 0)
-              .toFixed(2)} $</h3>
-                                <hr className="my-4"/>
-                                <div className="text-center">
-                                    <button type="button" className="btn btn-primary mb-2" >CHECKOUT</button>
-                                    <button type="button" className="btn btn-outlineprimary btn-sm" >CLEAR</button>
-                                </div>
-
-                            </div>
-                        </div>
-                    
-                    
-                
-
-
-        </Row>
-        </div>}
-</>
-     );
-}
- 
 export default CartScreen;

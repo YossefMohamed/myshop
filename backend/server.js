@@ -1,23 +1,25 @@
 const express = require("express");
 const app = express();
 const cors = require("cors");
-const dotenv = require("dotenv");
+app.use(cors());
 const productRoutes = require("./routes/productRoutes");
 const userRoutes = require("./routes/userRoutes");
+const orderRoutes = require("./routes/orderRoutes");
 const connectDB = require("./database");
 const morgan = require("morgan");
-dotenv.config({ path: "./config.env" });
-
+const path = require("path");
+require('dotenv').config({ path: "config.env" })
 connectDB();
 app.use(morgan("dev"));
-
+app.use("/static", express.static(path.join(__dirname, "public")));
+console.log(path.join(__dirname , './config.env') )
 app.use(express.json());
-app.use(cors());
 app.use("/api/products", productRoutes);
+app.use("/api/order", orderRoutes);
 app.use("/api/users", userRoutes);
 
 const port = process.env.PORT || 5000;
-const products = require("./../frontend/src/products");
+
 
 app.use((req, res, next) => {
   // console.log(res);
@@ -29,10 +31,15 @@ app.use((req, res, next) => {
 app.use((err, req, res, next) => {
   // console.log(res);
   const statusCode = res.statusCode === 200 ? 500 : res.statusCode;
+
   res.json({
     message: err.message,
     stack: err.stack,
   });
 });
 
-app.listen(port, () => console.log(`Example app listening on port ${port}`));
+
+
+app.listen(port, "0.0.0.0", function () {
+  console.log("Listening to port:  " + port);
+});

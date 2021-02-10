@@ -1,0 +1,17 @@
+.notfound__container {
+  justify-content: space-around;
+  align-items: center;
+  text-align: center;
+  margin: 13rem 0;
+  a {
+    color: #f74046;
+    outline: none;
+    border: none;
+  }
+  .notfound--code {
+    border-right: 3px solid #e5e5e5;
+    h1 {
+      font-size: 5rem;
+    }
+  }
+}

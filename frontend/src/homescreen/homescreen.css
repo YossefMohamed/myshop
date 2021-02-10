@@ -3,9 +3,10 @@
 }
 .card--title {
   border-bottom: 1px solid #e5e5e5;
-  min-height: 5rem;
+  min-height: 7.5rem;
+  padding-top: 2rem !important;
   display: flex;
-  align-items: center;
+  /* align-items: center; */
   font-weight: bolder;
 }
 
@@ -57,7 +58,7 @@ button {
   opacity: 0.33;
 }
 .btn--enable {
-  color: black;
+  color: #ee242b;
   cursor: pointer;
 }
 
@@ -124,4 +125,7 @@ button {
 
 .silderSection:first-child {
   margin-bottom: 3rem;
+}
+.pagination-component nav {
+  box-shadow: none;
 }

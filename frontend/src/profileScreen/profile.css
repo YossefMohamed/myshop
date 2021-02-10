@@ -1,0 +1,113 @@
+.profile__head--image {
+  width: 100%;
+  height: 15rem;
+  background-color: #f77e82;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 2rem;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.profile--image {
+  width: 10rem;
+  height: 10rem;
+  border-radius: 50%;
+  margin-right: 3rem;
+}
+
+.profile--container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.profile--container .profile--cat {
+  width: 30%;
+  background-color: #efefef;
+}
+
+.profile--container .profile--cat .profile--cat--item {
+  border-bottom: 1px solid #e5e5e5;
+  cursor: pointer;
+  font-size: 1rem;
+  color: black;
+  padding: 1.5rem 2rem;
+}
+
+.profile--container .profile--cat .profile--cat--item:hover {
+  background-color: #e5e5e5;
+}
+
+.profile--container .profile-info {
+  border: 1px solid #e5e5e5;
+  padding: 1rem;
+  width: 70%;
+}
+
+.profile--container .profile-info h1 {
+  margin: 3rem 0;
+  text-transform: none;
+}
+
+@media only screen and (max-width: 750px) {
+  .profile--container {
+    display: block;
+  }
+  .profile--container .profile--cat {
+    width: 100%;
+  }
+  .profile--container .profile-info {
+    width: 100%;
+  }
+  .profile__head--image {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    text-align: center;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    padding: 2rem;
+  }
+  .profile__head--image img {
+    margin: 0;
+  }
+}
+
+.order--tracker .div-table {
+  display: table;
+  width: 100%;
+  overflow: scroll;
+  background-color: #eee;
+  border-spacing: 2px;
+  border-radius: 4px;
+}
+
+.order--tracker .trow {
+  display: table-row;
+}
+
+.order--tracker .tcolumn {
+  display: table-cell;
+  vertical-align: top;
+  background-color: #fff;
+  padding: 10px 8px;
+}
+
+.order--tracker .tcolumn1 {
+  width: 240px;
+}
+
+.order--tracker .tcolumn4,
+.order--tracker .tcolumn5,
+.order--tracker .tcolumn6 {
+  width: 80px;
+}
+/*# sourceMappingURL=profile.css.map */

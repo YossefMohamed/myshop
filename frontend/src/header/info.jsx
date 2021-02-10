@@ -45,13 +45,7 @@ const Info = () => {
               <div className="nav__phone">
                 <Menu clicked={clicked} />
                 <i className="fas fa-globe-americas"></i>{" "}
-                <strong
-                  onClick={(e) => {
-                    handleOnClick();
-                  }}
-                >
-                  English
-                </strong>
+                <strong>English</strong>
                 <div className="menu-arrow">&#8249;</div>
               </div>
             </div>

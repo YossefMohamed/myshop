@@ -94,15 +94,40 @@ label {
   border: 0;
   height: 50px;
   width: 100%;
-  background: black;
+  background: #f74046;
   color: white;
-  border: 1px black solid;
+  border: 1px #f74046 solid;
   margin: 0.5rem 0;
 }
 
 .login__form--submit:hover {
   background-color: white;
-  color: black;
+  color: #f74046;
+}
+
+.login__form--submit a {
+  display: block;
+  width: 100%;
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.login__form--submit a:hover {
+  color: #f74046;
+}
+
+.link--register {
+  display: block;
+  width: 100%;
+  height: 100%;
 }
 
 .register .register__form--submit {
@@ -110,15 +135,15 @@ label {
   border: 0;
   height: 50px;
   width: 100%;
-  background: black;
+  background: #f74046;
   color: white;
-  border: 1px black solid;
+  border: 1px #f74046 solid;
   margin: 2rem 0;
 }
 
 .register .register__form--submit:hover {
   background-color: white;
-  color: black;
+  color: #f74046;
 }
 
 .error {
@@ -189,5 +214,19 @@ label {
   left: 50%;
   -webkit-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
+}
+
+.go-back {
+  width: 10%;
+}
+
+.btn-my-shop {
+  border: 1px solid #e5e5e5;
+}
+
+.btn-my-shop:hover {
+  border: 1px solid #f74046;
+  background-color: #ffffff;
+  color: #f74046;
 }
 /*# sourceMappingURL=loginScreen.css.map */

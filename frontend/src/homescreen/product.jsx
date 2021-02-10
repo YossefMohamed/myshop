@@ -11,14 +11,14 @@ function Product(props) {
   let cartItemsQty = 0;
   useSelector((state) => {
     return state.cart.cartItems.map((e) => {
-      if (e.product === props.product._id) cartItemsQty += e.qty;
+      if (e._id === props.product._id) cartItemsQty += e.qty;
     });
   });
   const wishListItems = useSelector((state) => state.wishList.wishListItems);
 
   useEffect(() => {
     wishListItems.map((e) => {
-      if (e.product === props.product._id) {
+      if (e._id === props.product._id) {
         setWishListed(true);
       }
     });
@@ -26,13 +26,12 @@ function Product(props) {
 
   return (
     <div>
-      <Card className="my-3 rounded-top w-100 card__item ">
+      <Card className="my-3 rounded-top w-100 card__item  ">
         <div
           className={`love--icon ${
             wishListed || props.page === "wishList" ? "loved" : ""
           }`}
           onClick={() => {
-            console.log(!props.product.product, props);
             if (props.page !== "wishList") {
               dispatch(addToWishList(props.product._id));
             }
@@ -43,7 +42,13 @@ function Product(props) {
         <div
           className={`trash--icon ${props.page === "home" ? "d-none" : ""}`}
           onClick={() => {
+            if(props.product.product){
+              
             dispatch(removeFromWishList(props.product.product));
+            }else{
+              
+            dispatch(removeFromWishList(props.product._id));
+            }
           }}
         >
           {" "}
@@ -86,14 +91,7 @@ function Product(props) {
                 sm={3}
                 onClick={() => {
                   if (props.product.countInStock) {
-                    dispatch(
-                      addToCart(
-                        props.product._id,
-                        cartItemsQty < props.product.countInStock
-                          ? ++cartItemsQty
-                          : cartItemsQty
-                      )
-                    );
+                    dispatch(addToCart(props.product._id, 1));
                   }
                 }}
                 as="button"

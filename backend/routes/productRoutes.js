@@ -1,17 +1,22 @@
 const express = require("express");
 
 const router = express.Router();
-const handler = require("express-async-handler");
-const { getProducts, getProductById } = require("../controllers/productController");
-router.get(
-  "/",
-  getProductById
-  
-);
+const protect = require("../controllers/authMiddleware");
+const {
+  getProducts,
+  getProductById,
+  addReviewToProduct,
+  getSearch,
+} = require("../controllers/productController");
 
-router.get(
-  "/:id",
-  getProducts
-);
+///api/products
+
+router.get("/", getProductById);
+
+router.patch("/review/:productId", protect, addReviewToProduct);
+
+router.get("/:id", getProducts);
+
+router.get("/search/page",getSearch);
 
 module.exports = router;

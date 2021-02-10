@@ -71,14 +71,31 @@ label {
   border: 0;
   height: 50px;
   width: 100%;
-  background: black;
+  background: #f74046;
   color: white;
-  border: 1px black solid;
+  border: 1px #f74046 solid;
   margin: 0.5rem 0;
   &:hover {
     background-color: white;
-    color: black;
+    color: #f74046;
   }
+  a {
+    display: block;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    &:hover {
+      color: #f74046;
+    }
+  }
+}
+
+.link--register {
+  display: block;
+  width: 100%;
+  height: 100%;
 }
 .register {
   .register__form--submit {
@@ -86,13 +103,13 @@ label {
     border: 0;
     height: 50px;
     width: 100%;
-    background: black;
+    background: #f74046;
     color: white;
-    border: 1px black solid;
+    border: 1px #f74046 solid;
     margin: 2rem 0;
     &:hover {
       background-color: white;
-      color: black;
+      color: #f74046;
     }
   }
 }
@@ -149,5 +166,18 @@ label {
       left: 50%;
       transform: translate(-50%, -50%);
     }
+  }
+}
+
+.go-back {
+  width: 10%;
+}
+
+.btn-my-shop {
+  border: 1px solid #e5e5e5;
+  &:hover {
+    border: 1px solid #f74046;
+    background-color: #ffffff;
+    color: #f74046;
   }
 }

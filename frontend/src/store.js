@@ -4,9 +4,17 @@ import {
   productListReducers,
   productDetailsReducer,
 } from "./reducers/productReducers";
-import { userLoginReducer, userRegisterReducer } from "./reducers/userReducers";
+import {
+  userLoginReducer,
+  userRegisterReducer,
+  messageUpdate,
+} from "./reducers/userReducers";
 import cartReducers from "./reducers/cartReducers";
 import wishListReducers from "./reducers/wishListReducers";
+import {
+  getAllOrderReducer,
+  orderCreateReducer,
+} from "./reducers/orderReducers";
 const devTools = require("redux-devtools-extension");
 const cartItemsFromStorage = localStorage.getItem("cartItems")
   ? JSON.parse(localStorage.getItem("cartItems"))
@@ -22,7 +30,10 @@ const initialState = {
   cart: {
     cartItems: cartItemsFromStorage,
   },
+  orderCreate: {},
   userLogin: { userInfo: userInfoFromStorage },
+  messageUpdate: { message: "", error: false },
+  allOrder: { order: [] },
 };
 
 const reducer = combineReducers({
@@ -32,6 +43,10 @@ const reducer = combineReducers({
   userLogin: userLoginReducer,
   userRegister: userRegisterReducer,
   wishList: wishListReducers,
+  messageUpdate,
+  orderCreate: orderCreateReducer,
+  allOrder: getAllOrderReducer,
+  // orderDetails: orderDetailsReducer,
 });
 
 const store = createStore(
