@@ -12,15 +12,15 @@ class Popup extends Component {
   componentDidMount() {
     let clicked = 0;
     // console.log(this.props);
-    // document.addEventListener("click", (event) => {
-    //   if (
-    //     !this.popUpRef.current.contains(event.target) &&
-    //     this.props.display.display &&
-    //     !(event.target.className === this.props.className)
-    //   ) {
-    //     this.props.clickMe();
-    //   }
-    // });
+    document.addEventListener("click", (event) => {
+     if(!!this.popUpRef.current){ if (
+        !this.popUpRef.current.contains(event.target) &&
+        this.props.display.display &&
+        !(event.target.className === this.props.className)
+      ) {
+        this.props.clickMe();
+      }}
+    });
   }
 
   render() {

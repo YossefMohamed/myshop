@@ -10,7 +10,7 @@ const Order = require("./models/userModel");
 const connectDB = () => {
   mongoose
     .connect(
-      `mongodb+srv://yossefegypt:0184738437@cluster0.cjhna.mongodb.net/my-shop?retryWrites=true&w=majority`,
+      process.env.MONGODBURI,
       {
         useNewUrlParser: true,
         useUnifiedTopology: true,

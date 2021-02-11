@@ -13,7 +13,7 @@ exports.protect = catchAsync(async (req, res, next) => {
   }
 
   // 2- validate token
-  const login = await jwt.verify(token, "JWT_SECRET");
+  const login = await jwt.verify(token, process.env.JWT_SECRET);
 
   const freshUser = await User.findById(login.id);
   if (!freshUser) {

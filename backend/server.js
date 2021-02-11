@@ -8,11 +8,11 @@ const orderRoutes = require("./routes/orderRoutes");
 const connectDB = require("./database");
 const morgan = require("morgan");
 const path = require("path");
-require('dotenv').config({ path: "config.env" })
+require('dotenv').config({path: path.join(__dirname , './config.env')});
+
 connectDB();
 app.use(morgan("dev"));
 app.use("/static", express.static(path.join(__dirname, "public")));
-console.log(path.join(__dirname , './config.env') )
 app.use(express.json());
 app.use("/api/products", productRoutes);
 app.use("/api/order", orderRoutes);
