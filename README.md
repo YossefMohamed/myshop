@@ -1,3 +1,3 @@
-# My Shop is A MERN App
+# My MERN SHOP APP
 
 Demo : https://myshop29.netlify.app/
