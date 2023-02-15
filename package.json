@@ -20,7 +20,7 @@
   },
   "devDependencies": {},
   "scripts": {
-    "start": "node backend/server.js",
+    "start": "node backend/server.js"
   },
   "author": "",
   "license": "ISC"
